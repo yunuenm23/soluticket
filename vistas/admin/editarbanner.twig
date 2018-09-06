@@ -1,0 +1,52 @@
+{% extends 'layoutAdmin.twig' %}
+{% block editarbanner %}
+<div class="container bg-white py-3">
+    <h3 class="">Editar banners</h3>
+    <div class="col-sm-12"><h3><a href="{{ 'admin/banners'|url }}" class="btn btn-outline-danger"><i style="font-size: 2em;" class="fas fa-chevron-left"></i></a></h3></div>
+
+    <div class="col-sm-12 ">
+        <div class="card">
+            <div class="card-header bg-dark">
+                <h3 class="card-title text-white">Cambiar banners</h3>
+            </div>
+            <form class="card" method="post" enctype="multipart/form-data">
+            <div class="col-sm-12">
+                    {% if errors %}
+                        <div class="alert alert-danger">No se pudo actualizar cambiar la imagen, revisa las restricciones de subida.</div>
+                    {% endif %}
+                    {% if resultado %}
+                        <div class="alert alert-success">Banner actualizado</div>
+                    {% endif %}
+                </div>
+                {% for banner in banners %}
+                <div class="card-body bg-light">
+                <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="form-label">Link</label>
+                                <input type="text" name="link" class="form-control" value="{{ banner.url }}">
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-sm-12 d-flex justify-content-between">
+                            <div class="alert alert-warning">
+                                <label for="slide">Imagen para carousel:
+                                    <a><br>Dimensiones: 1280x500<br>Imagen inferior: <br>Dimensiones 1140x160<br>Tamaño máximo: 1M<br>Formatos permitidos: JPEG, JPG, PNG</a>
+                                </label>                      
+                                <input type="file" class="form-control-file" name="thumbnail" id="thumbnail">
+                            </div>                
+                        </div>
+                        <div class="col-lg-12 col-sm-6 form-group">
+                            <div class="card-footer text-right">
+                                <button type="submit" class="btn btn-pinterest">Cambiar imagen</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

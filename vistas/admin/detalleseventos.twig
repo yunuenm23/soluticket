@@ -1,0 +1,129 @@
+{% extends 'layoutAdmin.twig' %}
+{% block detalleseventos %}
+<div class="container bg-white py-5">
+    <h3 class="">Detalles de los eventos</h3>
+    <div class="col-sm-12"><h3><a href="{{ 'admin/'|url }}" class="btn btn-outline-danger"><i style="font-size: 2em;" class="fas fa-chevron-left"></i></a></h3></div>
+    
+    <div class="col-sm-12" >
+        <div class="card">
+            <div class="card-header bg-dark">
+                <h3 class="card-title text-white"><i class="fas fa-plus-circle fa-2x"></i></h3>
+            </div>
+            <form class="card" method="post" enctype="multipart/form-data">
+            <div class="col-sm-12 mt-3">
+                    {% if errors %}
+                        <div class="alert alert-danger">Hubo un error con la imagen del mapa, revisa las restricciones de subida.</div>
+                    {% endif %}
+                    {% if resultado %}
+                        <div class="alert alert-success">Se ha añadido la información detallada del evento</div>
+                    {% endif %}
+                </div>
+                <div class="card-body bg-light">
+                <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                             <label for="evento">Evento:</label>
+                                <select class="custom-select" name="evento">
+                                    {% for eventosid in eventoid %}
+                                        <option value="{{ eventosid.id }}" selected="selected">{{ eventosid.id }}
+                                            -
+                                            {{ eventosid.nombre }}
+                                            -
+                                            {{ eventosid.fecha }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            <label>Precios de boletos</label>
+                            <textarea id="editor1" name="precios" rows="25" class="p-4">{{ mapa.precios }}</textarea>
+                            <script>
+                                CKEDITOR.replace( 'editor1' );
+                            </script>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="alert alert-warning">
+                                <label for="mapa">Subir imagen:
+                                    <a><br>Dimensiones: 800X800<br>Tamaño máximo: 1M<br>Formatos permitidos: JPEG, JPG, PNG</a>
+                                </label>                        
+                                <input type="file" class="form-control-file" name="mapa" id="mapa" required>
+                            </div>                
+                        </div>
+
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group">
+                                <label class="form-label">Botón manual</label>
+                                <input type="text" name="manual" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group">
+                                <label class="form-label">Botón automático</label>
+                                <input type="text" name="automatico" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            <label>Texto adicional</label>
+                            <textarea id="editor2" name="detalles" rows="25" class="p-4"></textarea>
+                            <script>
+                                CKEDITOR.replace( 'editor2' );
+                            </script>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-sm-6 form-group">
+                            <div class="card-footer text-right">
+                                <button type="submit" class="btn btn-pinterest">Agregar</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-success">
+                <h3 class="card-title text-white">Publicados</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table card-table table-center text-nowrap table-hover">
+                <thead class="text-center bg-light">
+                <tr>
+                    <th  class="text-dark">Evento</th>
+                    <th class="text-dark">Mapa</th>
+                    <th  class="text-dark">Opciones</th>
+                </tr>
+                </thead>
+                <tbody class="text-center">
+                {% for detalle in detalles %}
+                <tr>
+                    <td><span>{{ detalle.eventos }}</span></td>
+                    <td>
+                        <span class="avatar mr-3 align-self-center" style="background-image: url(../{{ detalle.mapa }})"></span>
+                    </td>      
+                    <td class="text-center">
+                        <a href="javascript:void(0)" class="btn btn-danger btn-sm" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fe fe-align-center"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ 'admin/detallesevento/' | url }}{{ detalle.id }}">Editar</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item d-flex align-items-center" href="{{ 'admin/eliminardetalle/' | url }}{{ detalle.id }}"><i class="text-danger fe fe-trash mr-1"></i> Eliminar</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}         
+                </tbody>
+                </table>
+            </div>
+        </div>
+     </div>
+
+</div>
+{% endblock %}

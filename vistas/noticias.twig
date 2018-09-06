@@ -1,0 +1,44 @@
+{% extends 'layout.twig' %}
+{% block noticias %}
+  
+    <div class="row pb-5">
+        <div class="bg-soluticket">
+          <div class="container">
+            <div clas="col-sm-12">
+                <div class="d-flex justity-content-center align-items-center">
+                    <div class="p-2">
+                        <div class="publicacion-nueva">
+                            <div class="titulo-publicacion p-1"><h3>Noticias publicadas</h3>
+                                <div class="descripcion-publicacion">
+                                  <a class="h5 text-warning" href="{{ '' | url }}">Inicio /</a>
+                                  <a class="h5 text-warning" href="{{ 'noticias' | url }}">Noticias /</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="container">
+        <div class="row pb-5">
+        {% for post in blog %}
+        <div class="col-lg-4 col-sm-12">
+            <div class="card-deck">
+                <div class="card">
+                    <a href="{{ 'vernoticia/' | url }}{{ post.id }}"><img class="card-img-top" src="{{ post.img_blog }}" alt="Card image cap"></a>
+                    <div class="card-body">
+                        <h3 class="card-title">{{ post.titulo }}</h3>
+                        <p class="card-text">{{ post.descripcion[start:80]|raw }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="text-dark">Publicado el :  {{ post.updated_at }}</div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

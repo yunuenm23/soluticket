@@ -1,0 +1,113 @@
+{% extends 'layoutAdmin.twig' %}
+{% block blog %}
+<div class="container bg-white py-3">
+    <h3 class="">Publicaciones</h3>
+    <div class="col-sm-12"><h3><a href="{{ 'admin/'|url }}" class="btn btn-outline-danger"><i style="font-size: 2em;" class="fas fa-chevron-left"></i></a></h3></div>
+
+  <div class="col-sm-12 ">
+    <div class="card">
+          <div class="card-header bg-dark">
+              <h3 class="card-title text-white">Nueva publicación</h3>
+          </div>
+          <form class="card" method="post" enctype="multipart/form-data">
+            <div class="col-sm-12">
+                {% if errors %}
+                    <div class="alert alert-danger">Thumbnail no guardado, revisa las restricciones de subida de archivo.</div>
+                {% endif %}
+                {% if resultado %}
+                    <div class="alert alert-success">Publicación guardada</div>
+                {% endif %}
+            </div>
+            <div class="card-body bg-light">
+            <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Titulo</label>
+                            <input type="text" name="titulo" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Descripción</label>
+                            <textarea style="width: 100%; height: 100%;" class="form-control" name="descripcion" rows="3" placeholder="Descripción breve"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Fecha</label>
+                            <input type="date" name="fecha" class="form-control"/>
+                        </div>
+                    </div>            
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                        <h4>Articulo</h4>
+                        <textarea id="editor1" name="articulo" rows="25" class="p-4"></textarea>
+                        <script>
+                            CKEDITOR.replace( 'editor1' );
+                        </script>
+                        </div>
+                    </div>                   
+                    <div class="col-sm-12 d-flex justify-content-between">
+                        <div class="alert alert-warning">
+                            <label for="slide">Subir imagen:
+                                <a><br>Dimensiones: 850x440<br>Tamaño máximo: 1M<br>Formatos permitidos: JPEG, JPG, PNG</a>
+                            </label>  
+                            <input type="file" class="form-control-file" name="post" id="thumb" required>
+                        </div>
+                        <div class="card-footer text-right">
+                            <button type="submit" class="btn btn-pinterest">Nueva publicación</button>
+                        </div>
+                    </div>
+                    
+                 </div>
+                </div>
+            </form>
+      </div>
+    </div>
+
+    <div class="col-12">
+    <div class="card">
+        <div class="card-header bg-dark">
+            <h3 class="card-title text-white">Eventos</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table card-table table-center text-nowrap table-hover">
+            <thead class="text-center bg-light">
+            <tr>
+                <th  class="text-dark">No.</th>
+                <th class="text-dark">Thumbnail</th>
+                <th  class="text-dark">Titulo</th>
+                <th  class="text-dark">Publicado</th>
+                <th  class="text-dark">Actualizado</th>
+                <th  class="text-dark">Opciones</th>
+            </tr>
+            </thead>
+            <tbody class="text-center"
+            {% for post in blog %}
+            <tr>
+                <td><span>{{ post.id }}</span></td>
+                <td>
+                    <span class="avatar mr-3 align-self-center" style="background-image: url(../{{ post.img_blog }})"></span>
+                </td>
+                <td >{{ post.titulo }}</td>
+                <td>{{ post.fecha }}</td>
+                <td>{{ post.updated_at }}</td>               
+                <td class="text-center">
+                    <a href="javascript:void(0)" class="btn btn-danger btn-sm" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fe fe-align-center"></i></a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ 'admin/blogeditar/' | url }}{{ post.id }}">Editar</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item d-flex align-items-center" href="{{ 'admin/eliminarpost/' | url }}{{ post.id }}"><i class="text-danger fe fe-trash mr-1"></i> Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}          
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

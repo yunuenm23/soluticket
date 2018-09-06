@@ -1,0 +1,125 @@
+{% extends 'layout.twig' %}
+{% block verevento %}
+    {% for evento in eventos %}
+    <div class="darkgray">
+        <div class="">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <a><img class="d-fluid w-100" src="../{{ evento.slide }}" alt=""></a>
+                        <div class="carousel-caption d-flex justify-content-around">            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="color-lines">
+        <div class="line lightred"></div>
+        <div class="line pink"></div>
+        <div class="line yellow"></div>
+        <div class="line darkblue"></div>
+        <div class="line skyblue"></div>
+        <div class="line green"></div>
+        <div class="line lightgreen"></div>
+    </div>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 col-sm-12">
+                <div class="d-flex text-center text-md-left">
+                    <a class="title">{{ evento.nombre }}</a>        
+                </div> 
+                <div class="descripcion-evento d-flex flex-column flex-lg-row justify-content-between">
+                    <div class="d-flex flex-column flex-lg-row text-center">
+                        <div class="pb-1 bolder">{{ evento.descripcion }} - </div>
+                        <div class="pb-1 ml-2 bolder">{{ evento.hora }} hrs.</div>
+                    </div>
+                    <div class="compartir-redes d-flex justify-content-center text-center py-2">
+                        <a class="d-flex justify-content-end align-items-end" href="whatsapp://send?text=https://soluticket.com.mx/public/verevento/{{ evento.id }}&{{ evento.nombre }}" data-action="share/whatsapp/share" data-size="large">
+                            <i class="fab fa-whatsapp whatsapp"></i>
+                        </a>
+                        <div data-href="https://soluticket.com.mx/public/verevento/{{ evento.id }}" data-layout="button" data-size="small" data-mobile-iframe="true">
+                            <a class="d-flex justify-content-end align-items-end" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsoluticket.com.mx%2Fpublic%2Fverevento%2F{{ evento.id }}&amp;src=sdkpreparse">
+                            <i class="fab fa-facebook-f facebook"></i>
+                            </a>
+                        </div>
+                        <a class="d-flex justify-content-end align-items-end" href="https://twitter.com/share?url=https://soluticket.com.mx/public/verevento/{{ evento.id }}&text={{ evento.nombre }}" data-size="large">
+                            <i class="fab fa-twitter twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="color-lines">
+                    <div class="line lightred"></div>
+                    <div class="line pink"></div>
+                    <div class="line yellow"></div>
+                    <div class="line darkblue"></div>
+                    <div class="line skyblue"></div>
+                    <div class="line green"></div>
+                    <div class="line lightgreen"></div>
+                </div>
+            </div>
+            {% for detalle in detalles %}
+            <div class="col-lg-9 col-sm-12 pt-3">
+                <div class="row">
+                    <div class="col-sm-12">{{ detalle.precios|raw }}</div>
+                    <div class="col-sm-12">
+                        <img src="../{{ detalle.mapa }}" width="100%">
+                        <div class="d-flex flex-column flex-md-row justify-content-between">
+                            <div class="d-flex flex-column my-1">
+                                <h4>¿Comprar boleto manualmente?</h4>
+                                <a href="{{ detalle.btn_manual }}" target="_blank" class="mx-1 btn btn-danger text-uppercase">Comprar boletos</a>                    
+                            </div>
+                            <div class="d-flex flex-column my-1">
+                            <h4>¿Comprar boleto automáticamente?</h4>
+                                <a href="{{ detalle.btn_automatico }}" target="_blank" class="mx-1 btn btn-danger text-uppercase">Comprar boletos</a>
+                                
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-12 pt-3">{{ detalle.detalles|raw }}</div>
+                    </div>
+                </div>                
+            </div>
+            {% endfor %}
+            <div class="col-lg-3 col-sm-12" style="width: 100%; height: 100%;">
+                {% for ads in google %}
+                <div class="col-sm-12  mb-3" style="width: 100%; height: 100%;">
+                   {{ ads.script|raw }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="title text-center text-md-left p-2">Puntos de venta
+                <div class="color-lines">
+                    <div class="line lightred"></div>
+                    <div class="line pink"></div>
+                    <div class="line yellow"></div>
+                    <div class="line darkblue"></div>
+                    <div class="line skyblue"></div>
+                    <div class="line green"></div>
+                    <div class="line lightgreen"></div>
+                </div>
+            </div>
+            {% for pventa in puntosdeventa %}
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-2 card-footer white">
+                <div class="d-flex flex-column">
+                    <div class="">
+                        <div class="card-text text-uppercase bolder h3">{{ pventa.establecimiento }}</div>
+                        <img src="../{{ pventa.thumbnail }}" width="100%">
+                        {% for detalle in detalles %}
+                        <div class="d-flex justify-content-between my-1">
+                            <a href="{{ detalle.btn_manual }}" target="_blank" type="button" class="btn btn-success btn-sm mr-1">MANUAL</a>
+                            <a href="{{ detalle.btn_automatico }}" target="_blank" type="button" class="btn btn-success btn-sm ml-1">AUTOMÁTICO</a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="card-body">         
+                        <p class="card-title">{{ pventa.contenido|raw }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

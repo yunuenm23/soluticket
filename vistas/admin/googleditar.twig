@@ -1,0 +1,32 @@
+{% extends 'layoutAdmin.twig' %}
+{% block googleditar %}
+    <h3 class="">Editar anuncios</h3>
+        <div class="col-sm-12 pt-5"><h3><a href="{{ 'admin/' | url }}" class="btn btn-outline-danger"><i style="font-size: 2em;" class="fas fa-chevron-left"></i></a></h3></div>
+
+        <div class="col-sm-12 py-5">
+            <div class="card-header bg-dark"><h3 class="card-title text-white">Editar publicidad</h3></div>
+            <form class="card" method="post" enctype="multipart/form-data">
+                <div class="col-sm-12 mt-3">
+                    {% if errors %}
+                        <div class="alert alert-danger">Imágenes no guardadas, revisa las restricciones de subida de archivo.</div>
+                    {% endif %}
+                    {% if resultado %}
+                        <div class="alert alert-success">Evento guardado</div>
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    {% for adwords in google %}
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <h4>Script</h4>
+                                <textarea class="form-control" style="width:100%;height:100%;" name="script" rows="10" class="p-4">{{ adwords.script|raw }}</textarea>
+                            </div>
+                            <div class="card-footer text-right">
+                                <button type="submit" class="btn btn-pinterest">Guardar</button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </form>          
+        </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'layoutAdmin.twig' %}
+
+{% block terminos %}
+<div class="container">
+  <div class="py-5">
+   {% for termino in terminos %} 
+      <form method="post" enctype="multipart/form-data">
+        <h2 class="">Términos y Condiciones de uso</h2>
+
+        {% if errors %}
+            <div class="alert alert-danger">No se pudo actualizar</div>
+        {% endif %}
+        {% if resultado %}
+            <div class="alert alert-success">Aviso de privacidad actualizado</div>
+        {% endif %}
+
+        <div class="form-group">
+          <label class="form-label">Titulo</label>
+          <input type="text" class="form-control p-2" value="{{ termino.titulo }}" name="titulo" placeholder="Titulo">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Articulo</label>
+          <textarea class="form-group" id="editor1" rows="25" name="articulo" class="p-4">{{ termino.articulo }}</textarea>
+          <script>
+              CKEDITOR.replace( 'editor1' );
+          </script>
+        </div>
+        <div class="form-admin d-flex justify-content-between align-items-center">
+          <input type="hidden" name="id" value="{{ aviso.id }}"></input>
+          <button type="submit" class="btn btn-red text-uppercase text-white my-3">Actualizar</button>
+        </div>
+      </form>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

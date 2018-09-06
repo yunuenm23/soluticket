@@ -1,0 +1,84 @@
+{% extends 'layoutAdmin.twig' %}
+
+{% block faq %}
+<div class="container">
+  <div class="py-5">
+
+      <form method="post" enctype="multipart/form-data">
+        <h3 class="">Nuevo Faq</h3>
+          <div class="col-sm-12"><h3><a href="{{ 'admin/'|url }}" class="btn btn-outline-danger"><i style="font-size: 2em;" class="fas fa-chevron-left"></i></a></h3></div>
+        {% if errors %}
+          {% include ('../partials/errors.twig') %}
+        {% endif %}
+
+        {% if resultado %}
+        <div class="alert alert-success">Nuevo Faq</div>
+        {% endif %}
+
+        <div class="form-group">
+          <label class="form-label">Pregunta</label>
+          <input type="text" class="form-control p-2" name="titulo" placeholder="Titulo">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Descripción</label>
+          <input type="text" class="form-control p-2" name="descripcion" placeholder="Descripción">
+        </div>       
+        <div class="form-group">
+          <label class="form-label">Contenido</label>
+          <textarea class="form-group" id="editor1" rows="25" name="articulo" class="p-4"></textarea>
+          <script>
+              CKEDITOR.replace( 'editor1' );
+          </script>
+        </div>
+        <div class="form-admin d-flex justify-content-between align-items-center">
+          <button type="submit" class="btn btn-red text-uppercase text-white my-3">Nueva pregunta</button>
+        </div>
+      </form>
+
+      <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header bg-dark">
+              <h3 class="card-title text-white">Preguntas</h3>
+            </div>
+             <div class="table-responsive">
+              <table class="table card-table table-center text-nowrap table-hover">
+                <thead class="text-center bg-light">
+                  <tr>
+                    <th class="text-dark">No.</th>
+                    <th class="text-dark">Titulo</th>
+                    <th class="text-dark">Descripción</th>
+                    <th class="text-dark">Fecha</th>
+                    <th class="text-dark">Opciones</th>
+                  </tr>
+                </thead>
+                <tbody <spa class="text-center"> 
+                {% for faqs in faq %} 
+                <tr> 
+                  <td>{{ faqs.id }}</span></td>
+                  <td>
+                    {{ faqs.titulo }}
+                  </td>
+                  <td >{{ faqs.descripcion }}</td>
+                  <td>{{ faqs.created_at }}</td>
+                  <td class="text-center">
+                    <a href="javascript:void(0)" class="btn btn-danger btn-sm" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fe fe-align-center"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="{{ 'admin/editarfaq/' | url }}{{ faqs.id }}">Editar</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item d-flex align-items-center" href="{{ 'admin/eliminarfaq/' | url }}{{ faqs.id }}">
+                        <i class="text-danger fe fe-trash mr-1"></i> Eliminar
+                      </a>
+                      </div>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                  </tbody>
+              </table>
+             </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

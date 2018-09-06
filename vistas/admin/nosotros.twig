@@ -1,0 +1,40 @@
+{% extends 'layoutAdmin.twig' %}
+{% block nosotros %}
+<div class="container bg-white py-3">
+    <h3 class="">Nosotros</h3>
+    <div class="col-sm-12"><h3><a href="{{ 'admin/'|url }}" class="btn btn-outline-danger"><i style="font-size: 2em;" class="fas fa-chevron-left"></i></a></h3></div>
+
+  <div class="col-sm-12 ">
+
+          <div class="card-header bg-dark">
+              <h3 class="card-title text-white">Nosotros</h3>
+          </div>
+          <form class="card" method="post" enctype="multipart/form-data">
+
+            <div class="card-body bg-light">
+            {% for dato in nosotros %}
+            <div class="row">
+                     <div class="col-sm-12">
+                        <div class="form-group">
+                        <h4>Contenido</h4>
+                        <textarea id="editor2" name="articulo" rows="25" class="p-4">{{ dato.articulo }}</textarea>
+                        <script>
+                            CKEDITOR.replace( 'editor2' );
+                        </script>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-6 form-group">
+                        <div class="card-footer text-right">
+                            <button type="submit" class="btn btn-pinterest">Guardar</button>
+                        </div>
+                    </div>
+                 </div>
+            {% endfor %}
+            </div>
+            </form>
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}

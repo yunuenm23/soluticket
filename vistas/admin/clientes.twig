@@ -1,0 +1,84 @@
+{% extends 'layoutAdmin.twig' %}
+{% block clientes %}
+<div class="container bg-white py-3">
+    <h3 class="">Clientes</h3>
+  <div class="col-sm-12"><h3><a href="{{ 'admin/'|url }}" class="btn btn-outline-danger"><i style="font-size: 2em;" class="fas fa-chevron-left"></i></a></h3></div>
+
+  <div class="col-sm-12 ">
+    <div class="card">
+          <div class="card-header bg-dark">
+              <h3 class="card-title text-white">Nuevo cliente</h3>
+          </div>
+          <form class="card" method="post" enctype="multipart/form-data">
+           <div class="col-sm-12 mt-3">
+                {% if errors %}
+                    <div class="alert alert-danger">Imagen no guardada, revisa las restricciones de subida de archivo.</div>
+                {% endif %}
+                {% if resultado %}
+                    <div class="alert alert-success">Cliente añadido</div>
+                {% endif %}
+            </div>
+            <div class="card-body bg-light">
+            <div class="row">         
+                    <div class="col-sm-12">
+                        <div class="alert alert-warning">
+                            <label for="slide">Subir imagen:
+                                <a><br>Dimensiones: 400x400<br>Tamaño máximo: 1M<br>Formatos permitidos: JPEG, JPG, PNG</a>
+                            </label>   
+                            <input type="file" class="form-control-file" name="thumbnail" id="thumbnail" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="card-footer text-right">
+                            <button type="submit" class="btn btn-pinterest">Agregar</button>
+                        </div>
+                    </div>
+                    
+                 </div>
+                
+                </div>
+            </form>
+      </div>
+    </div>
+
+    <div class="col-12">
+    <div class="card">
+        <div class="card-header bg-dark">
+            <h3 class="card-title text-white">Clientes</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table card-table table-center text-nowrap">
+            <thead class="text-center bg-light">
+            <tr>
+                <th  class="text-dark">No.</th>
+                <th class="text-dark">Thumbnail</th>
+                <th  class="text-dark">Actualizado</th>
+                <th  class="text-dark">Opciones</th>
+            </tr>
+            </thead>
+            <tbody class="text-center"
+            {% for cliente in clientes %}
+            <tr>
+                <td><span>{{ cliente.id }}</span></td>
+                <td>
+                    <span class="avatar mr-3 align-self-center" style="background-image: url(../{{ cliente.thumbnail }})"></span>
+                </td>
+                <td><span>{{ cliente.updated_at }}</span></td>       
+                <td class="text-center">                 
+                    <a href="javascript:void(0)" class="btn btn-danger btn-sm" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fe fe-align-center"></i></a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ 'admin/editarcliente/' | url }}{{ cliente.id }}">Editar</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item d-flex align-items-center" href="{{ 'admin/eliminarcliente/' | url }}{{ cliente.id }}"><i class="text-danger fe fe-trash mr-1"></i> Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}          
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

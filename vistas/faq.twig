@@ -1,0 +1,34 @@
+{% extends 'layout.twig' %}
+{% block faq %}
+<div class="bg-blog">
+    <div class="d-flex justity-content-center align-items-center">
+        <div class="container py-3">
+            <div class="publicacion-nueva">
+                <div class="titulo-publicacion my-3">
+                    <h3>Preguntas frecuentes</h3>
+                     <div class="descripcion-publicacion"><h4></h4>Resolvemos tus dudas</h4></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container white py-5">
+        {% for faq in faqs %}  
+            <div class="col-sm-12">                                  
+                <div class="card bg-container my-2">
+                    <div class="card-header">
+                        <button class="btn-faq cursor text-uppercase text-center" data-toggle="collapse" href="#{{ faq.id }}" role="button" aria-expanded="false" aria-controls="{{ faq.id }}">{{ faq.titulo }}</button>
+                    </div>
+                    <div class="collapse" id="{{ faq.id }}">
+                        <div class="noticia-nueva">
+                            <div class="titulo-noticias my-3">{{ faq.titulo }}</div>
+                            <div class="descripcion-noticia pl-3">{{ faq.descripcion }}</div>
+                        </div>
+                        <div class="card-body">{{ faq.articulo|raw }}</div>
+                    </div>                      
+                </div>
+            </div>     
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}  

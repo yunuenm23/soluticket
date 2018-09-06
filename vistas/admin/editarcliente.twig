@@ -1,0 +1,44 @@
+{% extends 'layoutAdmin.twig' %}
+{% block editarcliente %}
+<div class="container bg-white py-3">
+    <h3 class="">Editar cliente</h3>
+  <div class="col-sm-12"><h3><a href="{{ 'admin/clientes'|url }}" class="btn btn-outline-danger"><i style="font-size: 2em;" class="fas fa-chevron-left"></i></a></h3></div>
+  <div class="col-sm-12 ">
+    <div class="card">
+        <div class="card-header bg-dark">
+            <h3 class="card-title text-white">Editar cliente</h3>
+        </div>
+            {% for cliente in clientes %}
+            <form class="card" method="post" enctype="multipart/form-data">
+            <div class="col-sm-12 mt-3">
+                {% if errors %}
+                    <div class="alert alert-danger">Imagen no guardada, revisa las restricciones de subida de archivo.</div>
+                {% endif %}
+                {% if resultado %}
+                    <div class="alert alert-success">Cliente actualizado</div>
+                {% endif %}
+            </div>
+                <div class="card-body bg-light">  
+                    <div class="row">       
+                        <div class="col-sm-12">
+                            <div class="alert alert-warning">
+                                <label for="slide">Subir imagen:
+                                    <a><br>Dimensiones: 400x400<br>Tamaño máximo: 1M<br>Formatos permitidos: JPEG, JPG, PNG</a>
+                                </label>   
+                                <input type="file" class="form-control-file" name="thumbnail" id="thumbnail" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="card-footer text-right">
+                                <button type="submit" class="btn btn-pinterest">Actualizar</button>
+                            </div>
+                        </div>
+                    </div>                 
+                </div>
+                </form>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'layoutAdmin.twig' %}
+
+{% block editarfaq %}
+<div class="container">
+  <div class="py-5">
+  {% for faqs in faq %}
+      <form method="post" enctype="multipart/form-data">
+        <h4 class="">Editar Faq</h4>
+
+        {% if errors %}
+         <div class="alert alert-danger">No se pudo actualizar</div>
+        {% endif %}
+
+        {% if resultado %}
+        <div class="alert alert-success">Faq actualizado</div>
+        {% endif %}
+
+        <div class="form-group">
+          <label class="form-label">Pregunta</label>
+          <input type="text" class="form-control p-2" name="titulo" value="{{ faqs.titulo }}" placeholder="Titulo">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Descripción</label>
+          <input type="text" class="form-control p-2" name="descripcion" value="{{ faqs.descripcion }}"placeholder="Descripción">
+        </div>       
+        <div class="form-group">
+          <label class="form-label">Contenido</label>
+          <textarea class="form-group" id="editor1" rows="25" name="articulo" class="p-4">{{ faqs.articulo }}</textarea>
+          <script>
+              CKEDITOR.replace( 'editor1' );
+          </script>
+        </div>
+        <div class="form-admin d-flex justify-content-between align-items-center">
+          <input type="hidden" name="id" value="{{ faqs.id }}"></input>
+          <button type="submit" class="btn btn-red text-uppercase text-white my-3">Guardar</button>
+        </div>
+      </form>
+  {% endfor %}
+  </div>
+</div>
+{% endblock %}

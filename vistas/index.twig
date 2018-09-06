@@ -1,0 +1,227 @@
+{% extends 'layout.twig' %}
+
+{% block inicio %}
+	<div class="bg-soluticket">
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner">
+			{% for main in carousel %}
+				<div class="carousel-item {{ main.activo }}">
+					<a href="{{ 'verevento/' | url }}{{ main.id }}"><img class="d-block w-100" src="{{ main.slide }}"></a>
+				</div>
+			{% endfor %}
+			{% for evento in eventos %}
+				<div class="carousel-item">
+					<a href="{{ 'verevento/' | url }}{{ evento.id }}"><img class="d-block w-100" src="{{ evento.slide }}"></a>
+				</div>
+			{% endfor %}
+			</div>
+			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+				<div class="btn-carousel d-flex justify-content-center"><span class="carousel-control-prev-icon" aria-hidden="true"></span></div>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+				<div class="btn-carousel d-flex justify-content-center"><span class="carousel-control-next-icon" aria-hidden="true"></span></div>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+
+	<div class="">
+		<div class="color-lines">
+			<div class="line lightred"></div>
+			<div class="line red"></div>
+			<div class="line pink"></div>
+			<div class="line yellow"></div>
+			<div class="line skyblue"></div>
+			<div class="line darkblue"></div>
+			<div class="line green"></div>
+			<div class="line lightgreen"></div>
+		</div>
+	</div>
+		
+	<div class="bg-nosotros">
+		<div class="container py-5">
+			<div class="row">
+				{% for contactos in contacto %}
+				<div class="col-lg-3 col-md-6 col-sm-6 col-6 soluticket">
+					<div class="titulo-nosotros line-top2 pb-3">¡Contáctanos!</div>
+					<p class="col-sm-12 infor">{{ contactos.contacto }}</p>
+					<div class="d-flex justify-content-center flex-column align-items-center">
+						<a class="icon-soluticket d-flex justify-content-center align-items-center" data-toggle="modal" data-target="#contacto">
+							<i class="far fa-envelope" aria-hidden="true"></i>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 col-sm-6 col-6 soluticket">
+					<div class="titulo-nosotros line-top2 pb-3 ">FAQ'S</div>
+					<p class="col-sm-12 infor">{{ contactos.faq }}</p>
+					<div class="d-flex justify-content-center flex-column align-items-center">
+						<a href="{{ 'faq' | url }}" class="icon-soluticket d-flex justify-content-center align-items-center">
+							<i class="fas fa-question"></i>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 col-sm-6 col-6 soluticket pt-5">
+					<div class="titulo-nosotros line-top3">¡Llámanos!</div>
+					<p class="col-sm-12 infor">{{ contactos.llamada }}</p>
+					<div class="icons-tickets d-flex justify-content-center flex-column align-items-center">
+						<a class="icon-soluticket d-flex justify-content-center align-items-center" data-toggle="modal" data-target="#mexico">
+							<i class="fas fas fa-phone"></i>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 col-sm-6 col-6 soluticket pt-5">
+					<div class="titulo-nosotros line-top3">Soporte</div>
+					<p class="col-sm-12 infor">{{ contactos.soporte }}</p>
+					<div class="icons-tickets d-flex justify-content-center flex-column align-items-center">
+						<a class="icon-soluticket d-flex justify-content-center align-items-center">
+							<i class="fas fa-cog"></i>
+						</a>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			
+		</div>
+	</div>
+
+	<div class="bg-banners py-3">
+		<div class="container">
+			<div class="row d-flex justify-content-center align-items-center">
+				<div class="col-sm-12  mb-1">
+				  	<div class="" id="slider">
+					<div class="slide-left"><</div>
+	  				<div class="slide-right">></div>
+				  	{% for ads in banners %}
+						<article>
+							<div>
+							<a href="{{ ads.url }}" target="_blank"><img src="{{ ads.img_banner }}" width="100%" alt=""></a>
+							</div>
+						</article>
+					{% endfor %}
+				  	</div>
+				</div>
+				{% for ad in banner %}
+				<div class="col-12 mt-1">
+					<a href="{{ ad.url }}" target="_blank"><img src="{{ ad.img_banner }}" width="100%" alt=""></a>
+				</div>
+				{% endfor %}
+			 </div>
+		</div>
+	</div>
+
+	<div class="py-5 wow animated fadeIn" data-wow-duration="2s" data-wow-delay=".5s">
+		<div class="title bolder text-uppercase text-center my-2">Noticias</div>
+		<div class="row d-flex justify-content-center align-items-center py-3">
+			{% for post in blog %}
+			<div class="col-lg-3 col-md-5 col-sm-10 col-10 my-2 thumb-noticia p-1 m-1">
+				<div class="container-new-img">
+				  <a href="{{ 'vernoticia/' | url }}{{ post.id }}"><img src="{{ post.img_blog }}" class="img-new"></a>
+				</div>
+				<div class="card-body mb-5">
+				  <h3 class="noticia-titulo text-uppercase">{{ post.titulo }}</h3>
+				  <p class="noticia-titulo">{{ post.descripcion[start:150] }}</p>
+				  <a class="btn btn-slide float-right" href="{{ 'vernoticia/' | url }}{{ post.id }}"><span>Ver más</span></a>
+				</div>
+			 </div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="bg-newsletter">
+		<div class="bg-negro">
+			<div class="row d-flex justify-content-center align-items py-5">
+				<div class="title text-center text-white mb-2">NEWSLETTER</div>
+				<div class="col-lg-6 col-sm-12 d-flex justify-content-center align-items">
+					<div class="col-12 my-3">
+						<form  method="post" class="d-flex justify-content-center flex-column">
+							<div class="form-group d-flex flex-column flex-md-row">
+							<input type="text" class="form-control mb-1" name="nombre" id="nombre"  onblur="may(this.value, this.id)" placeholder="Nombre" required>
+							<div class="m-1"></div>
+							<input type="text" class="form-control" name="apellido" id="apellido" onblur="may(this.value, this.id)" placeholder="Apellido" required>
+							</div>
+							<div class="form-group">
+							<input type="text" class="form-control" name="ciudad" id="ciudad" onblur="may(this.value, this.id)" placeholder="Ciudad" required>
+							</div>
+							<div class="form-group">
+							<input type="email" class="form-control" name="correo" id="correo" placeholder="Correo electrónico" name="correo" required>
+							</div>
+							<div class="form-group d-flex">
+							<button type="submit" style="width:100%; border-radius: 50px;" class="btn btn-success text-uppercase py-2 px-4"><h3>Suscribirse</h3></button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	 	</div>
+	</div>
+
+	{% if veravisoerror %}
+		<div class="alert alert-danger">Imagen no guardada, revisa las restricciones de subida de archivo.</div>
+	{% endif %}
+	{% if veraviso %}
+	<div class="newsletter cursor animated slideInDown" id="newsletter">
+		<div class="row d-flex justify-content-center align-items-center">
+
+			<div class="mx-2 col-lg-6 col-sm-12 ">
+				<div class="">
+					<div class="color-lines">
+						<div class="line lightred"></div>
+						<div class="line red"></div>
+						<div class="line pink"></div>
+						<div class="line yellow"></div>
+						<div class="line skyblue"></div>
+						<div class="line darkblue"></div>
+						<div class="line green"></div>
+						<div class="line lightgreen"></div>
+					</div>
+				</div>
+				<div class="newsletter-aviso">
+					<div class="card text-center">
+						<div class="d-flex justify-content-center align-items-center py-2">
+							<h3>¡Gracias!</h3>
+						</div>
+						<div class="card-footer white text-dark py-5">
+							<h4>¡Te has suscrito a nuestro newsletter!</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<script>
+		var modal = document.getElementById('newsletter');
+		window.onclick = function (event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
+	{% endif %}
+
+	<div class="container d-flex justify-content-center mt-3">
+		<div class="col-sm-1"></div>
+		<div class="col-lg-12 col-md-12 col-sm-10 col-10">
+			{% for ads in googleIndex %}
+				<div style="width:100%; height: 100%;">{{ ads.script|raw }}</div>
+			{% endfor %}
+		</div>
+		<div class="col-sm-1"></div>
+	</div>
+
+	<div class="bg-partners container pt-5">
+		<div class="title bolder text-uppercase text-center pb-2">Nuestros clientes</div>
+		<div class="owl-carousel pb-5">
+		{% for cliente in clientes %}
+			<div class="item-partner d-flex justify-content-center align-items-center">
+				<img class="partners-img" src="{{ cliente.thumbnail }}">
+			</div>
+		{% endfor %}
+		</div>
+	</div>
+	  
+{% endblock %}

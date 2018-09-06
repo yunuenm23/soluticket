@@ -1,0 +1,93 @@
+{% extends 'layoutAdmin.twig' %}
+{% block detallesevento %}
+<div class="container bg-white py-5">
+    <h3 class="">Detalles del evento</h3>
+    <div class="col-sm-12"><h3><a href="{{ 'admin/detalleseventos'|url }}" class="btn btn-outline-danger"><i style="font-size: 2em;" class="fas fa-chevron-left"></i></a></h3></div>
+    
+    <div class="col-sm-12" >
+        <div class="card">
+            <div class="card-header bg-dark">
+                <h3 class="card-title text-white">Editar detalles del evento</h3>
+            </div>
+            <form class="card" method="post" enctype="multipart/form-data">
+            <div class="col-sm-12 mt-3">
+                    {% if errors %}
+                        <div class="alert alert-danger">No se puede actualizar, revisa las restricciones de subida.</div>
+                    {% endif %}
+                    {% if resultado %}
+                        <div class="alert alert-success">Información actualizada</div>
+                    {% endif %}
+                </div>
+                <div class="card-body bg-light">
+                <div class="row">
+                {% for mapa in detalles %}
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                             <label for="evento">Evento:</label>
+                                <select class="custom-select" name="evento">
+                                    {% for eventosid in eventoid %}
+                                        <option value="{{ eventosid.id }}" selected="selected">{{ eventosid.id }}
+                                            -
+                                            {{ eventosid.nombre }}
+                                            -
+                                            {{ eventosid.fecha }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            <label>Precios de boletos</label>
+                            <textarea id="editor1" name="precios" rows="25" class="p-4">{{ mapa.precios }}</textarea>
+                            <script>
+                                CKEDITOR.replace( 'editor1' );
+                            </script>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="alert alert-warning">
+                                <label for="mapa">Subir imagen:
+                                    <a><br>Dimensiones: 800x800<br>Tamaño máximo: 1M<br>Formatos permitidos: JPEG, JPG, PNG</a>
+                                </label>                        
+                                <input type="file" class="form-control-file" name="mapa" id="mapa" value=" {{ mapa.mapa }} ">
+                            </div>                
+                        </div>
+
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group">
+                                <label class="form-label">Botón manual</label>
+                                <input type="text" name="manual" class="form-control" value="{{ mapa.btn_manual }}">
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group">
+                                <label class="form-label">Botón automático</label>
+                                <input type="text" name="automatico" class="form-control" value="{{ mapa.btn_automatico }}">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            <label>Texto adicional</label>
+                            <textarea id="editor2" name="detalles" rows="25" class="p-4">{{ mapa.detalles }}</textarea>
+                            <script>
+                                CKEDITOR.replace( 'editor2' );
+                            </script>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-sm-6 form-group">
+                            <div class="card-footer text-right">
+                                <button type="submit" class="btn btn-pinterest">Actualizar</button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+</div>
+{% endblock %}

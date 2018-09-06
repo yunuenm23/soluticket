@@ -1,0 +1,11 @@
+<div class="row">
+	<div class="col-sm-12">
+		<div class="alert alert-danger">
+				{% for input, messages in errors %}
+					{% for message in messages %}
+						 {{ input}}: {{ message}}
+					{% endfor %}
+				{% endfor %}
+		</div>
+	</div>
+</div>

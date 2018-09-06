@@ -1,0 +1,76 @@
+{% extends 'layout.twig' %}
+{% block nosotros %}
+	<div class="bg-soluticket">
+		<div class="d-flex justity-content-center align-items-center">
+			<div class="container py-3">
+				<div class="publicacion-nueva">
+					<div class="titulo-publicacion my-3">
+						<h3>Sobre nosotros</h3>
+						<div class="descripcion-publicacion">
+							<h4>Soluticket</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="">
+		<div class="color-lines">
+			<div class="line lightred"></div>
+			<div class="line red"></div>
+			<div class="line pink"></div>
+			<div class="line yellow"></div>
+			<div class="line skyblue"></div>
+			<div class="line darkblue"></div>
+			<div class="line green"></div>
+			<div class="line lightgreen"></div>
+		</div>
+	</div>
+		
+
+	<div class="bg-nosotros">
+		<div class="container py-5">
+			<div class="row py-2">			
+				<div class="col-lg-4 col-md-6 col-sm-12 col-12 nosotros">
+					<div class="titulo-nosotros line-top2">Nosotros</div>
+					<div class="text-center">
+						<a>Soluticket: es una empresa que busca reunir los beneficios de las soluciones de emisión de boletos electrónicos. Actuando con transparencia y con fuertes valores que engrandecen su desempeño, con un sistema de boletaje innovador.</a>
+					</div>
+					<div class="icons-tickets d-flex justify-content-center flex-column align-items-center">
+						<i class="icon-nosotros-size fas fa-users" aria-hidden="true"></i>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-sm-12 col-12 nosotros">
+						<div class="titulo-nosotros line-top2">Misión</div>
+						<div class="text-center">
+							<a>Brindar el mejor servicio de boletaje, a través de atención personalizada y las mejores soluciones tecnológicas a nuestros socios y consumidores, con el fin de obtener su lealtad y preferencia.</a>
+						</div>
+						<div class="icons-tickets d-flex justify-content-center flex-column align-items-center">
+							<i class="icon-nosotros-size fa fas fa-flag"></i>
+						</div>
+				</div>
+
+				<div class="col-lg-4 col-md-12 col-sm-12 col-12 nosotros">
+					<div class="titulo-nosotros line-top3">Visión</div>
+					<div class="text-center">
+						<a>Convertir el proceso de de boletos de entrada en un proceso sistematizado que permita incrementar la productividad y mejorar la administración del evento.</a>
+					</div>
+					<div class="icons-tickets d-flex justify-content-center flex-column align-items-center">
+						<i class="icon-nosotros-size fa fas fa-forward"></i>
+					</div>
+				</div>			
+			</div>
+			<div class="row pt-5">
+				<div class="col-sm-12">
+					<div class="embed-responsive embed-responsive-16by9">
+						{% for info in nosotros %}
+							{{ info.articulo|raw }}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

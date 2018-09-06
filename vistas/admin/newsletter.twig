@@ -1,0 +1,51 @@
+{% extends 'layoutAdmin.twig' %}
+{% block puntosdeventa %}
+<div class="container bg-white py-3">
+    <h3 class="">Newsletters</h3>
+  <div class="col-sm-12 d-flex justify-content-between">
+    <h3><a href="{{ 'admin/'|url }}" class="btn btn-outline-danger"><i style="font-size: 2em;" class="fas fa-chevron-left"></i></a></h3>
+    <form action="newsletter/" method="post">
+        <button type="submmit" class="btn btn btn-dark"><i class="fe fe-arrow-down mr-2"></i>Descargar Newsletter</button>
+    </form>
+</div>
+
+
+    <div class="col-12">
+    <div class="card">
+        <div class="card-header bg-dark">
+            <h3 class="card-title text-white">Newsletter</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table card-table table-center text-nowrap table-hover">
+            <thead class="text-center bg-light">
+            <tr>
+                <th  class="text-dark">Nombre</th>
+                <th     class="text-dark">Correo</th>
+                <th  class="text-dark">Ciudad</th>
+                <th  class="text-dark">Alta</th>
+                <th  class="text-dark">Opciones</th>
+            </tr>
+            </thead>
+            <tbody class="text-center"
+            {% for correo in newsletter %}
+            <tr>
+                <td><span>{{ correo.nombre }}</span></td>
+                <td >{{ correo.correo }}</td>     
+                <td >{{ correo.ciudad }} {{ correo.apellido }}</td>
+                <td >{{ correo.created_at }}</td>             
+                <td class="text-center">
+                    <a href="javascript:void(0)" class="btn btn-danger btn-sm" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fe fe-align-center"></i></a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item d-flex align-items-center" href="{{ 'admin/newsletter/eliminar/' | url }}{{ correo.id }}"><i class="text-danger fe fe-trash mr-1"></i> Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}          
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

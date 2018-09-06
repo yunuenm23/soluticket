@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Soluticket</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="STILO Creative Studio & Printing">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
+  <script src="{{ 'panel/assets/js/require.min.js' | url }}"></script>
+  <script src="https://cdn.ckeditor.com/4.9.2/full-all/ckeditor.js"></script>
+  <link href="{{ 'panel/assets/css/dashboard.css' | url }}" rel="stylesheet" />
+  <script src="{{ 'panel/assets/js/dashboard.js' | url }}"></script>
+  <link href="{{ 'panel/assets/plugins/charts-c3/plugin.css' | url }}" rel="stylesheet"/>
+  <script src="{{ 'panel/assets/plugins/charts-c3/plugin.js' | url }}"></script>
+  <link href="{{ 'panel/assets/plugins/maps-google/plugin.css' | url }}" rel="stylesheet"/>
+  <script src="{{ 'panel/assets/plugins/maps-google/plugin.js' | url }}"></script>
+  <script src="{{ 'panel/assets/plugins/input-mask/plugin.js' | url }}"></script>
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../favicons/apple-touch-icon.png">
+  <link rel="android-touch-icon" type="image/png" sizes="192x192" href="../favicons/android-chrome-192x192.png">
+  <link rel="android-touch-icon" sizes="512x512" href="../favicons/android-chrome-512x512.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicons/favicon-16x16.png">
+  <link rel="icon" href="favicons/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300" rel="stylesheet">
+</head>
+<body class="blue">
+<div class="container my-5">
+    <div class="row p-3">
+     <div class="col-sm-12">
+       {% if errors %}
+        {% include('partials/errors.twig') %}
+      {% endif %}
+     </div>
+      	<div class="col-sm-12 col-12">
+	        <form method="post" class="bg-white p-3 d-flex flex-column justify-content-center">
+	          <div class="d-flex justify-content-center py-2"><img src="{{ 'images/logo.png' | url }}" width="500px" height="100px"></div>
+	          <h2 class="my-3 text-dark text-center">Inicio de Sesión</h2>
+	          <div class="form-group">
+                <label class="form-check-label" for="correo">Correo</label>
+	              <input type="email" class="form-control mx-1 my-2" name="correo" placeholder="Correo electrónico" id="correo">
+	          </div> 
+	          <div class="form-group">
+                <label class="form-check-label" for="password">Contraseña</label>
+	              <input type="password" class="form-control mx-1 my-2" name="clave" placeholder="Contraseña" id="password">
+	          </div>
+	            <button type="submit" class="btn btn-danger btn-lg cursor text-uppercase">Ingresar</button>
+	        </form>
+          {# <label class="form-label py-3">
+              <a  class="text-yellow">¿No puedes ingresar?</a><a href="{{ 'recuperarcuenta'  | url }}" class="text-yellow"> click aquí</a>
+            </label> #}
+      	</div>
+	</div>
+</div>
+<!-- JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

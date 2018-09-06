@@ -1,0 +1,156 @@
+{% extends 'layout.twig' %}
+{% block eventos %}
+    <div class="bg-eventos">
+        <div class="bg-azul d-flex justity-content-center align-items-center">
+            <div class="container py-5">
+                <div class="title bolder text-uppercase text-white text-center my-2 wow animated fadeIn" data-wow-duration="2s" data-wow-delay=".5s">Busca el evento de tu preferencia</div>
+            </div>
+         </div>
+    </div>
+    
+    <div class="color-lines">
+        <div class="line lightred"></div>
+        <div class="line red"></div>
+        <div class="line pink"></div>
+        <div class="line yellow"></div>
+        <div class="line skyblue"></div>
+        <div class="line darkblue"></div>
+        <div class="line green"></div>
+        <div class="line lightgreen"></div>
+    </div>
+
+    <div class="container py-5">
+
+        <div class="row mb-5">
+            {% for ads in google %}
+            <div class="col-sm-12" style="width:100%;height:100%;">{{ ads.script|raw }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="row mb-5">
+        
+        <div class="col-lg-3 col-md-12 col-sm-12 col-12">
+
+                <form class="py-2 px-1 d-flex flex-column" method="post">
+                    <div class="form-search-shows2 d-flex flex-column">
+                        <label for="exampleFormControlSelect1">Buscar por ciudad</label>
+                        <select class="form-search-shows2 px-5 py-2 mb-2 text-center" id="exampleFormControlSelect1" name="ciudad" required>
+                        <option disabled selected>Ciudades</option>
+                        {% for ciudad in eventos %}
+                            <option value="{{ ciudad.ciudad }}">{{ ciudad.ciudad }}</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+
+                    <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+
+                <form class="py-2 px-1 d-flex flex-column" method="post">
+                    <div class="form-search-shows2 d-flex flex-column">
+                        <label for="exampleFormControlSelect1">Buscar por categoría</label>
+                        <select class="form-search-shows2 px-5 py-2 mb-2 text-center" id="exampleFormControlSelect1" name="categoria" required>
+                        <option disabled selected>Categorías</option>
+                        {% for categoria in categorias %}
+                            <option value="{{ categoria.id }}">{{ categoria.categoria }}</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+
+                    <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+
+        </div>
+
+        <div class="col-lg-9 col-md-12 col-sm-12">
+            <div class="card-body">
+                    <div class="text-center text-md-left">
+                        <h1>Eventos</h1>
+                        <div class="color-lines">
+                            <div class="line lightred"></div>
+                            <div class="line pink"></div>
+                            <div class="line yellow"></div>
+                            <div class="line darkblue"></div>
+                            <div class="line skyblue"></div>
+                            <div class="line green"></div>
+                            <div class="line lightgreen"></div>
+                        </div>
+                    </div>
+            </div>
+
+        <div class="row pt-5">
+                {% for evento in eventostodos %}
+                   <div class="col-sm-12 mt-3">
+                        <div class="card">
+                            <div class="container-evento">
+                                <a href="{{ 'verevento/' | url }}{{ evento.id }}"><img class="image" src="{{ evento.slide }}"></a>
+                                <div class="middle">
+                                    <div class="overlay d-flex justify-content-center align-items-center">
+                                        <a href="{{ 'verevento/' | url }}{{ evento.id }}"><i class="fas fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="evento-botones d-flex flex-column flex-sm-row justify-content-between">
+                                <div class="darkgray d-flex justify-content-center align-items-center"><h3 class="text-warning">{{ evento.nombre }}</h3></div>
+                                <a href="{{ 'verevento/' | url }}{{ evento.id }}" class="btn-eventos ml-2 text-center text-uppercase"><span class="text-center">Comprar</span></a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        {% for evento in eventosolo %}
+        <div class="col-sm-12 mt-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-sm-12">
+                        <div class="card">
+                            <div class="container-evento">
+                                <a href="{{ 'verevento/' | url }}{{ evento.id }}"><img class="image" src="{{ evento.slide }}"></a>
+                                <div class="middle">
+                                    <div class="overlay d-flex justify-content-center align-items-center">
+                                        <a href="{{ 'verevento/' | url }}{{ evento.id }}"><i class="fas fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="evento-botones d-flex flex-column flex-sm-row justify-content-between">
+                                <div class="darkgray d-flex justify-content-center align-items-center"><h3 class="text-warning">{{ evento.nombre }}</h3></div>
+                                <a href="{{ 'verevento/' | url }}{{ evento.id }}" class="btn-eventos ml-2 text-center text-uppercase"><span class="text-center">Comprar</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+         {% for evento in categoriasola %}
+        <div class="col-sm-12 mt-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-sm-12">
+                        <div class="card">
+                            <div class="container-evento">
+                                <a href="{{ 'verevento/' | url }}{{ evento.id }}"><img class="image" src="{{ evento.slide }}"></a>
+                                <div class="middle">
+                                    <div class="overlay d-flex justify-content-center align-items-center">
+                                        <a href="{{ 'verevento/' | url }}{{ evento.id }}"><i class="fas fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="evento-botones d-flex flex-column flex-sm-row justify-content-between">
+                                <div class="darkgray d-flex justify-content-center align-items-center"><h3 class="text-warning">{{ evento.nombre }}</h3></div>
+                                <a href="{{ 'verevento/' | url }}{{ evento.id }}" class="btn-eventos ml-2 text-center text-uppercase"><span class="text-center">Comprar</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        </div>             
+    </div>
+</div>
+{% endblock %}

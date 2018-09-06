@@ -1,0 +1,1140 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Assistant', sans-serif;
+    font-size: 16px;
+}
+
+h1,h2,h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: bolder;
+}
+
+h4,h5,h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    font-family: 'Assistant';
+    font-size: 16px;
+}
+
+a {
+    font-size: 18px;
+}
+
+h5, .h5 {
+    font-size: 20px;
+}
+h4, .h4 {
+    font-size: 24px;
+}
+h3, .h3 {
+    font-size: 27px;
+    font-family: 'Assistant';
+}
+h2, .h2 {
+    font-size: 30px;
+}
+h1, .h1 {
+    width: 100%;
+    font-size: 32px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-family: 'Anton', sans-serif;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.color-lines {
+    width: 100%;
+    display: flex;
+}
+
+.bolder {
+    font-weight: bolder;
+}
+
+.line {
+    width: 20%;
+    height: 4px;
+}
+
+.long-line {
+    width: 100%;
+    height: 2px;
+}
+
+.red {
+    background-color: var(--red);
+}
+
+.lightred {
+    background-color: var(--lightred);
+}
+
+.yellow {
+    background-color: var(--yellow);
+}
+
+.green {
+    background-color: var(--green);
+}
+
+.skyblue {
+    background-color: var(--skyblue);
+}
+
+.darkyellow {
+    background-color: var(--darkyellow);
+}
+
+.darkblue {
+    background-color: var(--darkblue);
+}
+
+.pink {
+    background-color: var(--pink);
+}
+
+.lightgreen {
+    background-color: var(--lightgreen);
+}
+
+.light {
+    background-color: var(--light);
+}
+
+.gray {
+    background-color: var(--gray);
+}
+
+.dark {
+    background-color: var(--dark);
+}
+
+.darkgray {
+    background-color: var(--darkgray);
+}
+
+.white {
+    background-color: var(--white);
+}
+
+.cursor {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.info {
+    background-color: var(--info);
+}
+
+.bg-newsletter {
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/newsletter.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-soluticket {
+    width: 100%;
+    height: 100%;
+    background-color: var(--darkblue);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.bg-nosotros {
+    background-color: var(--white);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .2);
+    position: relative;
+}
+
+.bg-banners {
+    width: 100%;
+    height: 100%;
+    background-color: var(--darkblue);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.bg-eventos {
+    width: 100%;
+    background-image: url("../images/bg-eventos.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.bg-blog {
+    width: 100%;
+    height: 100%;
+    background-color: var(--darkblue);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.bg-azul {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 50, 85, .7);
+}
+
+.bg-blanco {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.bg-negro {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.btn-slide {
+    text-transform: uppercase;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: var(--white);
+    background-color: var(--green);
+}
+
+.btn-slide:hover {
+    color: var(--white);
+    background-color: var(--darkgreen);
+}
+
+.btn-slide span {
+    cursor: pointer;
+    font-size: 1.2em;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.btn-slide span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.btn-slide:hover span {
+    padding-right: 25px;
+}
+
+.btn-slide:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.btn-eventos {
+    font-size: 1.2em;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: var(--dark);
+    border: 1px solid var(--green);
+    border-radius: 50px;
+    background-color: var(--green);
+    transition: .3s ease-in;
+}
+
+.btn-eventos:hover {
+    font-weight: bolder;
+    color: var(--darkgray);
+    background-color: var(--darkgreen);
+}
+
+.btn-eventos span {
+    cursor: pointer;
+    font-size: 1em;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.btn-eventos span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    transition: 0.5s;
+}
+
+.btn-eventos:hover span {
+    padding-right: 15px;
+}
+
+.btn-eventos:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.btn-faq {
+    width: 100%;
+    text-align: start;
+    color: var(--white);
+    font-size: 1.3em;
+    background-color: var(--darkgreen);
+    border: none;
+    box-shadow: 0 5px var(--darkblue);
+    border-radius: 4px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    transition: .3s ease-in;
+}
+
+.btn-carousel {
+    padding: 10px;
+    border-radius: 50px;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.logo {
+    width: 300px;
+}
+
+.eventos {
+    width: 100%;
+    height: 683px;
+}
+
+.title {
+    width: 100%;
+    font-size: 2em;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-family: 'Anton', sans-serif;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* Icons soluticket  */
+
+.soluticket {
+    background-color: transparent;
+    text-align: center;
+}
+
+.icon-soluticket {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: .3s ease-in;
+}
+
+.icon-soluticket:hover {
+    background-color: var(--darkblue);
+}
+
+.icon-soluticket i {
+    color: var(--red);
+    font-size: 3em;
+}
+
+.icon-soluticket:hover i {
+    color: var(--white);
+}
+
+/* NOSOTROS */
+
+.nosotros {
+    padding-bottom: 60px;
+    padding-top: 30px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 4px;
+    transition: .3s ease-in-out;
+}
+
+.nosotros:hover {
+    background-color: rgba(0, 0, 0, 0.041);
+    border-radius: 4px;
+}
+
+.nosotros-texto {
+    font-family: 'Assistant', helvetica, sans-serif;
+    font-weight: 400;
+}
+
+.titulo-nosotros {
+    font-size: 2em;
+    color: var(--dark);
+    text-align: center;
+    font-family: 'Assistant', Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+
+.icons-tickets {
+    font-family: 'Assistant', helvetica, sans-serif;
+    font-weight: 800;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.icons-tickets .icon-nosotros-size {
+    width: 140px;
+    height: 140px;
+    border-radius: 1200px;
+    border: 2px solid var(--light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--red);
+    font-size: 4em;
+    transition: .3s ease-in;
+}
+
+.icons-tickets:hover .icon-nosotros-size:hover {
+    border: 5px solid var(--light);
+    transform: rotate(360deg);
+    color: var(--lightred);
+    font-size: 3em;
+    background-color: var(--light);
+}
+
+/* BANNERS */
+
+#slider article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s ease-in;
+}
+
+.slide-left,
+.slide-right {
+    top: 42%;
+    padding: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.slide-left:hover,
+.slide-right:hover {
+    color: var(--yellow);
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.slide-left {
+    left: 0rem;
+}
+
+.slide-right {
+    right: 0rem;
+}
+
+/* PARTNERS */
+
+.item-partner {
+    border: .2em var(--light);
+}
+
+.partners-img {
+    -webkit-filter: brightness(0%);
+    filter: brightness(0%);
+    transition: .3s ease-in;
+}
+
+.partners-img:hover {
+    -webkit-filter: brightness(100%);
+    filter: brightness(100%);
+}
+
+.pay {
+    font-size: 6em;
+}
+
+.pay:hover,
+i {
+    color: var(--darkblue);
+    transition: .3s ease-in-out;
+}
+
+.pay i:hover {
+    color: var(--lightgreen);
+}
+
+/* BLOG */
+
+.container-new-img {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    border-bottom: 2px solid var(--gray);
+}
+
+.img-new {
+    width: 100%;
+    transition: .2s ease-in;
+}
+
+.img-new:hover {
+    transform: scale(1.10);
+}
+
+.overlay-new {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 5px solid var(--red);
+    background-color: rgba(0, 0, 0, .5);
+    overflow: hidden;
+    width: 100%;
+    height: 0%;
+    transition: .5s ease;
+}
+
+.overlay-content-new {
+    color: var(--dark);
+    font-size: 1.2em;
+    font-weight: bolder;
+    position: absolute;
+}
+
+/* CONTACTO */
+
+.contact-form {
+    width: 70%;
+    border: 1px solid var(--gray);
+    color: var(--bluedark);
+    background-color: var(--light);
+    border-radius: .15em;
+    padding: 5px;
+    padding-left: 10px;
+    outline: none;
+    transition: .3s ease-in;
+}
+
+.contact-form:hover {
+    border: none;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.contact-form:focus {
+    border: none;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+/* REDES */
+
+.social-media {
+    width: 100%;
+    height: 100%;
+}
+
+.social-media a {
+    text-decoration: none;
+    transition: .3s ease-in;
+}
+
+.social-media .fab {
+    font-size: 20px;
+    color: var(--white);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 50px;
+    border: 1px solid var(--white);
+    transition: .3s ease-in;
+}
+
+.social-media .fab:hover {
+    font-size: 30px;
+    color: var(--white);
+    border: 1px solid var(--red);
+    background-color: var(--red);
+}
+
+.soluticket-blanco {
+    width: 50%;
+    height:100%;
+}
+
+.mastercard {
+    width: 110px;
+    height: 40px;
+    transition: .3s ease-in;
+}
+
+.mastercard:hover {
+    transform: scale(.9, .9);
+}
+
+.secure {
+    width: 50px;
+    height: 110px;
+    transition: .3s ease-in;
+}
+
+.secure:hover {
+    transform: scale(.9, .9);
+}
+
+.visa {
+    width: 100px;
+    height: 40px;
+    transition: .3s ease-in;
+}
+
+.visa:hover {
+    transform: scale(.9, .9);
+}
+
+.footer-titulo {
+    font-weight: bold;
+    cursor: text;
+    color: var(--white);
+    text-align: left;
+}
+
+.footer-links a {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--white);
+    transition: .3s ease-in;
+}
+
+.footer-links a:hover {
+    color: var(--yellow);
+}
+
+/* BTN SCROLL */
+
+#btnScroll {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Fixed/sticky position */
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: var(--red);
+    color: var(--white);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 25px;
+    transition: .3s ease-in;
+}
+
+#btnScroll:hover {
+    background-color: var(--lightred);
+}
+
+/* EVENTOS */
+
+.form-search-shows2 {
+    display: flex;
+    width: 100%;
+}
+
+.form-search-shows2 button {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-size: 28px;
+    color: var(--white);
+    border-radius: 0px 50px 50px 0px;
+    background-color: var(--green);
+    border: .005em solid var(--green);
+    cursor: pointer;
+    outline: none;
+    transition: .3s ease-in;
+}
+
+.form-search-shows2 button:hover {
+    background-color: var(--darkgreen);
+    border: .005em solid var(--darkgreen);
+    color: var(--light);
+    font-size: 1.5em;
+}
+
+.form-search-shows2 button:focus {
+    background-color: var(--green);
+    border: .005em solid var(--green);
+}
+
+.form-search-shows2 input {
+    width: 100%;
+    border: .005em solid var(--green);
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 50px 0px 0px 50px;
+    outline: none;
+    background-color: rgba(255, 255, 255, .7);
+    transition: .3s ease-in;
+}
+
+.form-search-shows2 input:hover {
+    background-color: rgba(255, 255, 255, .5);
+    border: .005em solid var(--green);
+    color: var(--dark);
+}
+
+.form-search-shows2 input:focus {
+    width: 100%;
+    color: var(--white);
+    background-color: rgba(0, 0, 0, .5);
+    border: .005em solid var(--green);
+}
+
+.evento-botones {
+    background-color: var(--darkgray);
+    padding: 10px;
+}
+
+.container-evento {
+    position: relative;
+    width: 100%;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    left: 150px;
+    transition: .5s ease-in;
+    backface-visibility: hidden;
+}
+
+.middle {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    transition: .5s ease-in;
+}
+
+.container-evento:hover .middle {
+    opacity: .8;
+    top: 50%;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    background-color: var(--light);
+    color: 0em solid var(--dark);
+    font-size: 16px;
+}
+
+.container-evento .overlay:hover {
+    top: 50%;
+}
+
+.overlay i {
+    color: var(--dark);
+    font-size: 5.5em;
+    opacity: 1;
+    padding: 16px;
+    border: .05em solid var(--dark);
+    border-radius: 75px;
+    transition: .3s ease-in;
+}
+
+.overlay i:hover {
+    color: var(--yellow);
+    transform: rotateZ(360deg);
+    border: .05em solid var(--yellow);
+}
+
+/*NOTICIAS*/
+
+.thumb-noticia {
+    border-radius: 2px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .5);
+    transition: .3s ease-in;
+}
+
+.thumb-noticia:hover {
+    transform: scale(.9, .9);
+    box-shadow: 0 0 5px rgba(0, 0, 0, .7);
+}
+
+.line-bottom {
+    width: 45%;
+    padding-bottom: 5px;
+    border-bottom: .05em solid var(--darkblue);
+}
+
+.titulo-noticias {
+    border-left: 15px solid var(--darkblue);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 1.5em;
+    font-family: 'Barlow', sans-serif;
+    font-weight: bolder;
+    border-bottom: 5px solid var(--light);
+}
+
+.contenido-noticia {
+    font-size: 1.3em;
+}
+
+.titulo-destacadas {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+
+.fecha-noticia {
+    border-left: 2px solid var(--green);
+}
+
+.titulo-publicacion {
+    font-size: 1.8em;
+    font-family: 'Barlow', sans-serif;
+    font-weight: bolder;
+    color: var(--white);
+}
+
+.descripcion-publicacion {
+    font-size: .8em;
+    font-weight: lighter;
+    font-family: 'Assistant', sans-serif;
+}
+
+.autor-datos {
+    font-size: 1.2em;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: var(--dark);
+}
+
+.compartir-redes a {
+    text-decoration: none;
+}
+
+.compartir-redes a i {
+    font-size: 1em;
+    color: var(--white);
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 36px;
+    height: 36px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+}
+
+.compartir-redes a i:hover {
+    font-size: .8em;
+    border-bottom: 10px solid var(--dark);
+}
+.compartir-redes a .whatsapp {
+    display: none;
+}
+
+/*REDES*/
+.facebook {
+    background-color: #3b5998;
+    transition: .3s ease-in;
+}
+
+.facebook:hover {
+    background-color: #29477c;
+    font-size: 1.2em;
+}
+
+.youtube {
+    background-color: #000000;
+    transition: .3s ease-in;
+}
+
+.youtube:hover,
+    {
+    background-color: #3d3d3d;
+    font-size: 1.2em;
+}
+
+.twitter {
+    background-color: #00aced;
+    transition: .3s ease-in;
+}
+
+.twitter:hover {
+    background-color: #1699c1;
+    font-size: 1.2em;
+}
+
+.whatsapp {
+    background-color: #4dc247;
+    transition: .3s ease-in;
+}
+
+.whatsapp:hover {
+    background-color: #40a038;
+    font-size: 1.2em;
+}
+
+.correo {
+    background-color: #000000;
+    transition: .3s ease-in;
+}
+
+.correo:hover {
+    background-color: #3d3d3d;
+    font-size: 1.2em;
+}
+
+.publicacion-destacada {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+
+.fecha-publicacion {
+    border-left: 2px solid var(--green);
+}
+
+/* EVENTOS */
+
+.descripcion-evento {
+    width: 100%;
+    color: var(--dark);
+    font-size: 1.5em;
+    padding: 5px;
+    border-top: .1em solid var(--light);
+    background-color: var(--white);
+}
+
+.newsletter {
+    display: block;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 60px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 768px) {
+    body{
+        font-size: 14px;
+    }
+    h5,
+    .h5 {
+        font-size: 18px;
+    }
+    p {
+        font-size: 16px;
+    }
+    h4,
+    .h4 {
+        font-size: 20px;
+    }
+    h3,
+    .h3 {
+        font-size: 22px;
+    }
+    h2,
+    .h2 {
+        font-size: 24px;
+    }
+    h1,
+    .h1 {
+        font-size: 27px;
+    }
+    .compartir-redes a i {
+        font-size: .9em;
+        color: var(--white);
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 35px;
+        height: 35px;
+        border-radius: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: .3s;
+    }
+    .compartir-redes a i:hover {
+        font-size: .6em;
+        border-bottom: 10px solid var(--dark);
+    }
+    .logo {
+        width: 200px;
+    }
+    .navbar-light .menu-item {
+        display: table-cell;
+        margin-left: 10px;
+    }
+    .navbar-light .menu-item .nav-link {
+        color: var(--darkblue);
+        text-align: center;
+        display: block;
+        line-height: 20px;
+        padding: 10px;
+        position: relative;
+        text-align: center;
+        background-color: transparent;
+        -moz-transition: .3s ease-in;
+        -ms-transition: .3s ease-in;
+        -webkit-transition: .3s ease-in;
+        -o-transition: .3s ease-in;
+        transition: .3s ease-in;
+    }
+    .title {
+        width: 100%;
+        font-size: 1.7em;
+        text-transform: uppercase;
+        font-weight: bolder;
+        font-family: 'Anton', sans-serif;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .titulo-nosotros {
+        font-size: 1.3em;
+    }
+    .nosotros {
+        padding-bottom: 30px;
+        padding-top: 15px;
+    }
+    .descripcion-publicacion {
+        font-size: .7em;
+    }
+    .icons-tickets .icon-nosotros-size {
+        font-size: 2em;
+        width: 80px;
+        height: 80px;
+        border-radius: 80px;
+    }
+    .icons-tickets:hover .icon-nosotros-size:hover {
+        font-size: 1.5em;
+    }
+    .overlay i {
+        font-size: 3.5em;
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+    }
+    .btn-carousel {
+        padding: 8px;
+    }
+    .compartir-redes a .whatsapp {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .carousel-control-prev-icon:hover,
+    .carousel-control-next-icon:hover {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        padding: 14px;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .carousel-control-prev-icon:hover,
+    .carousel-control-next-icon:hover {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        padding: 12px;
+    }
+    .logo {
+        width: 150px;
+    }
+    .titulo-publicacion {
+        font-size: 1.2em;
+        font-family: 'Barlow', sans-serif;
+        font-weight: bolder;
+        color: var(--white);
+    }
+    .descripcion-publicacion {
+        font-size: .8em;
+    }
+    .icon-soluticket {
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: .3s ease-in;
+    }
+    .icon-soluticket i {
+        color: var(--red);
+        font-size: 1.5em;
+    }
+    .overlay i {
+        font-size: 1.5em;
+    }
+     .slide-left, .slide-right{
+        top: 32%;
+        padding: 5px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .carousel-indicators {
+        display: none;
+    }
+    .carousel-indicators {
+        display: none;
+    }
+    .slide-left, .slide-right{
+        top: 25%;
+        padding: 5px;
+    }
+}
+}

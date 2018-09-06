@@ -1,0 +1,79 @@
+{% extends 'layout.twig' %}
+{% block vernoticia %}
+{% for post in blog %}
+    <div class="bg-blog">
+        <div class="d-flex justity-content-center align-items-center">
+            <div class="container py-3">
+                <div class="publicacion-nueva">
+                    <div class="titulo-publicacion my-3">
+                       <h3>{{ post.titulo }}</h3>
+                        <div class="d-flex flex-column">
+                            <h4>{{ post.descripcion }}</h5>
+                        </div>
+                    </div>                    
+                </div>          
+            </div>
+        </div>
+    </div>
+
+    <div class="container pt-2 pb-5">
+        <div class="row">
+            
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="publicacion-nueva">
+                            <div class="compartir-redes d-flex flex-column justify-content-start  py-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="autor-datos d-flex flex-column">                 
+                                        <h5 class="bolder">Por: Soluticket</h4>
+                                        <h5 class="bolder">Publicado: {{ post.fecha }}</h4>
+                                    </div>
+                                </div>                            
+                                <div class="d-flex">       
+                                    <div data-href="https://soluticket.com.mx/public/vernoticia/{{ post.id }}" data-layout="button" data-size="small" data-mobile-iframe="true">
+                                        <a class="d-flex justify-content-center align-items-center facebook text-white" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsoluticket.com.mx%2Fpublic%2Fvernoticia%2F{{ post.id }}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+                                            <i class="fab fa-facebook-f"></i> <div class="pr-3">Compartir</div>
+                                        </a>
+                                    </div>
+                                    <a class="d-flex justify-content-end align-items-end" href="whatsapp://send?text=https://soluticket.com.mx/public/vernoticia/{{ post.id }}&{{ post.titulo }}" data-action="share/whatsapp/share" data-size="large">
+                                        <i class="fab fa-whatsapp whatsapp"></i>
+                                    </a>
+                                    <a class="d-flex justify-content-end align-items-end" href="https://twitter.com/share?url=https://soluticket.com.mx/public/vernoticia/{{ post.id }}&text={{ post.titulo }}" data-size="large">
+                                        <i class="fab fa-twitter twitter"></i>
+                                    </a>
+                                </div>
+                            </div>                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="col-lg-10 col-sm-12">
+                <img src="../{{ post.img_blog }}" width="100%">
+                <div class="contenido-publicacion">
+                    <div>
+                        {{ post.articulo|raw }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-sm-12" style="width=100%; height:100%;">
+            {% for ads in google %}
+                    <div>
+                        {{ ads.script|raw }}
+                    </div>
+            {% endfor %}
+            </div>
+
+            <div class="col-sm-12 mt-5">
+                <div class="container">
+                    <div class="fb-comments" data-href="https://soluticket.com.mx/public/vernoticia/" data-width="100%" data-numposts="6"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

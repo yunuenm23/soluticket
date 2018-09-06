@@ -1,0 +1,142 @@
+{% extends 'layoutAdmin.twig' %}
+
+{% block editareventos %}
+<div class="container bg-white py-3">
+    <h3 class="">Editar evento</h3>
+    <div class="col-sm-12"><h3><a href="{{ 'admin/eventos'|url }}" class="btn btn-outline-danger"><i style="font-size: 2em;" class="fas fa-chevron-left"></i></a></h3></div>
+
+  <div class="col-sm-12 ">
+          <div class="card-header bg-dark">
+              <h3 class="card-title text-white">Editar evento</h3>
+          </div>
+                <form class="card" method="post" enctype="multipart/form-data">
+                    <div class="col-sm-12 mt-3">
+                        {% if errors %}
+                            <div class="alert alert-danger">Imágenes no guardadas, revisa las restricciones de subida de archivo.</div>
+                        {% endif %}
+                        {% if resultado %}
+                            <div class="alert alert-success">Evento actualizado</div>
+                        {% endif %}
+                    </div>
+                    <div class="card-body bg-light">
+                        <div class="row">
+                        {% for evento in eventos %}
+                            <div class="col-sm-12 form-group">
+                                <div class="form-label">¿Quieres publicar el evento?</div>
+                                <div class="custom-controls-stacked">
+                                    <label class="custom-control custom-radio custom-control-inline"><input type="radio" class="custom-control-input" name="pub" value="1" <?php if (isset($fefw) && $fefw=="1") echo "checked";? required> <span class="custom-control-label">Si</span>
+                                </label>
+                                    <label class="custom-control custom-radio custom-control-inline"><input type="radio" class="custom-control-input" name="pub" value="0" <?php if (isset($fefw) && $fefw=="0") echo "checked";? required> <span class="custom-control-label">No</span>
+                                </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="form-group">
+                                    <label class="form-label">Titulo del evento</label>
+                                    <input type="text" name="nombre" class="form-control" value="{{ evento.nombre }}">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="form-group">
+                                    <label class="form-label">Recinto</label>
+                                    <input type="text" name="descripcion" class="form-control" value="{{ evento.descripcion }}">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                            <div class="form-group">
+                            <label class="form-label">Selecciona un estado</label>
+                                <select class="custom-select" name="estado" required>
+                                <option disabled>Selecciona un estado</option>
+                                        <option value="Aguascalientes">Aguascalientes</option>
+                                        <option value="Baja California">Baja California</option>
+                                        <option value="Baja California Sur">Baja California Sur</option>
+                                        <option value="Campeche">Campeche</option>
+                                        <option value="Coahuila ">Coahuila </option>
+                                        <option value="Colima">Colima</option>
+                                        <option value="Chiapas">Chiapas</option>
+                                        <option value="Chihuahua">Chihuahua</option>
+                                        <option value="CDMX">CDMX</option>
+                                        <option value="Durango">Durango</option>
+                                        <option value="Guanajuato">Guanajuato</option>
+                                        <option value="Guerrero">Guerrero</option>
+                                        <option value="Hidalgo">Hidalgo</option>
+                                        <option value="Jalisco">Jalisco</option>
+                                        <option value="México">México</option>
+                                        <option value="Michoacán ">Michoacán</option>
+                                        <option value="Morelos">Aguascalientes</option>
+                                        <option value="Nayarit">Nayarit</option>
+                                        <option value="Nuevo León">Nuevo León</option>
+                                        <option value="Oaxaca">Oaxaca</option>
+                                        <option value="Puebla">Puebla</option>
+                                        <option value="Querétaro">Querétaro</option>
+                                        <option value="Quintana Roo">Quintana Roo</option>
+                                        <option value="San Luis Potosí">San Luis Potosí</option>
+                                        <option value="Sinaloa">Sinaloa</option>
+                                        <option value="Sonora">Sonora</option>
+                                        <option value="Tabasco">Tabasco</option>
+                                        <option value="Tamaulipas">Tamaulipas</option>
+                                        <option value="Tlaxcala">Tlaxcala</option>
+                                        <option value="Veracruz ">Veracruz</option>
+                                        <option value="Yucatán">Yucatán</option>
+                                        <option value="Zacatecas">Zacatecas</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group">
+                                <label class="form-label">Ciudad</label>
+                                <input type="text" name="ciudad" class="form-control" value="{{ evento.ciudad }}" required>
+                            </div>
+                        </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <div class="form-group">
+                                    <label class="form-label">Selecciona una categoria</label>
+                                    <select class="custom-select" name="categoria" required>
+                                        <option class="dark" disabled>Selecciona una categoria</option>
+                                        {% for categoria in categorias %}
+                                            <option value="{{ categoria.id }}" selected="selected">{{ categoria.categoria }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-12">
+                                <div class="form-group">
+                                    <label class="form-label">Fecha</label>
+                                    <input type="date" name="fecha" class="form-control" value="{{ evento.fecha }}">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-12">
+                                <div class="form-group">
+                                    <label class="form-label">Hora</label>
+                                    <input type="time" name="hora" class="form-control" value="{{ evento.hora }}">
+                                </div>
+                            </div>             
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="form-label">Pixel de Facebook</label>
+                                    <textarea style="width: 100%; height: 100%;" class="form-control" name="pixel" rows="6" placeholder="...">{{ evento.facebook_pixel }}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="alert alert-warning">
+                                    <label for="slide">Subir imagen:
+                                        <a><br>Dimensiones: 1980x800<br>Tamaño máximo: 1M<br>Formatos permitidos: JPEG, JPG, PNG</a>
+                                    </label>
+                                    <input type="file" class="form-control-file" name="slide" id="slide" value="{{ evento.slide }}">
+                                </div>                                       
+                            </div>
+                            <div class="col-sm-12 d-flex justify-content-end">
+                                <div class="card-footer text-right">
+                                    <input type="hidden" name="FE" value="active">
+                                    <button type="submit" class="btn btn-pinterest">Actualizar</button>
+                                </div>   
+                            </div>
+                    {% endfor %}
+                    </div>             
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

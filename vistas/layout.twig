@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="Content-Language" content="es"/>
+	{% for sitio in cabecera %}
+	<meta name="description" content="{{ sitio.descripcion }}">
+	<meta name="keywords" content="{{ sitio.pclave }}">
+	<meta name="author" content="{{ sitio.autor }}">
+	<title>{{ sitio.sitio }}</title>
+	{% endfor %}
+	<meta name="robots" content="all"/>
+	<meta name="”distribution”" content="global"/>
+	<meta name="resource-type" content="Document" />
+	<meta property="og:site_name" content="https//wwww.soluticket.com.mx/" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Language" content="es" />
+    <meta name="msapplication-TileColor" content="#B71A20">
+    <meta name="theme-color" content="#004669">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+	{# Website #}
+	{% for sitio in head %}
+	<meta property="og:url" content="{{ '' | url }}"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:title" content="{{ sitio.sitio }}"/>
+	<meta property="og:description" content="{{ descripcion }}"/>
+	<meta property="og:image" content="{{ 'images/' | url }}logo.png"/>
+	{% endfor %}
+	{# Social facebook #}
+	{% for post in blog %}
+	<meta property="og:url" content="{{ 'verblog/{{ post.id }}' | url }}"/>
+	<meta property="og:type" content="article"/>
+	<meta property="og:title" content="{{ post.titulo }}"/>
+	<meta property="og:description" content="{{ post.descripcion }}"/>
+	<meta property="og:image" content="{{ '' | url }}{{ post.img_blog }}"/>
+	{% endfor %}
+	{# Social facebook #}
+	{% for facebook in eventos %}
+	<meta property="og:url" content="{{ 'verevento/{{ facebook.id }}' | url }}"/>
+	<meta property="og:type" content="article"/>
+	<meta property="og:title" content="{{ facebook.nombre }}"/>
+	<meta property="og:description" content="{{ facebook.descripcion }}"/>
+	<meta property="og:image" content="{{ '' | url }}{{ facebook.slide }}"/>
+	{% endfor %}
+	<link rel="stylesheet" href="{{ 'css/animate.css' | url }}">
+	<link rel="stylesheet" href="{{ 'css/bootstrap.css' | url }}">
+	<link rel="stylesheet" href="{{ 'css/style-soluticket.css' | url }}">
+	<link rel="stylesheet" href="{{ 'css/owl.carousel.css' | url }}">
+	<link rel="stylesheet" href="{{ 'css/owl.theme.default.css' | url }}">
+	<link rel="stylesheet" href="{{ 'css/owl.theme.green.css' | url }}">
+	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="{{ 'favicons/apple-touch-icon.png' | url }}">
+	<link rel="android-touch-icon" type="image/png" sizes="192x192" href="{{ 'favicons/android-chrome-192x192.png' | url }}">
+	<link rel="android-touch-icon" sizes="512x512" href="{{ 'favicons/android-chrome-512x512.png' | url }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicons/favicon-32x32.png' | url }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ 'favicons/favicon-16x16.png' | url }}">
+	<link rel="icon" href="{{ 'favicons/favicon.ico' | url }}">
+	<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Anton|Assistant:400,700|Barlow:400,700|Hammersmith+One|Quicksand:400,700" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+	{% for pixel in pfacebook %}
+		{{ pixel.facebook_pixel|raw }}
+	{% endfor %} 
+	<script src="{{ 'js/wow.js' | url }}"></script>
+	<script>
+	  new WOW().init();
+	</script>
+</head>
+<body>
+	<div id="fb-root"></div>
+	<script>
+		window.fbAsyncInit = function() {
+			FB.init({
+			appId      : '{406703936333666}',
+			xfbml      : true,
+			version    : 'v3.0'
+			});
+		
+			FB.AppEvents.logPageView();
+		
+		};
+		
+            function onButtonClick() {
+              // Add this to a button's onclick handler
+              FB.AppEvents.logEvent("sentFriendRequest");
+            }
+    
+		(function (d, s, id) {
+			var js,
+				fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) 
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.0&appId=406703936333666&autoLogAppEvents=1";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+	<nav class="navbar navbar-expand-md navbar-light white">
+		<div class="container d-flex justify-content-around">
+			<a class="navbar-brand" href="{{ '' | url }}">
+				<img src="{{ 'images/logo.png' | url }}" class="logo" alt="">
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+					<li class="menu-item active">
+						<a class="nav-link" href="{{ '' | url }}"><i class="fas fa-home"></i> <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="menu-item">
+						<a class="nav-link" href="{{ 'nosotros' | url }}"><span class="uno"><i class="text-danger icono fas fa-users"></i></span>Nosotros</a>
+					</li>
+					<li class="menu-item">
+						<a class="nav-link" href="{{ 'eventos' | url }}"><span class="uno"><i class="text-danger icono fas fa-calendar-alt"></i></span>Eventos</a>
+					</li>
+					<li class="menu-item">
+						<a class="nav-link" href="{{ 'faq' | url }}"><span class="uno"><i class="text-danger icono fas fa-question"></i></span>Faq's</a>
+					</li>
+					<li class="menu-item">
+						<a class="nav-link" href="{{ 'noticias' | url }}"><span class="uno"><i class="text-danger icono fas fa-align-center"></i></span>Noticias</a>
+					</li>
+					<li class="menu-item cursor">
+						<a class="nav-link" data-toggle="modal" data-target="#contacto"><span class="uno"><i class="text-danger icono far fa-envelope"></i></span>Contacto</a>
+					</li>
+					<li class="menu-item">
+						<a class="nav-link" href="http://soluticket.com/" target="_blank"><span class="uno"><i class="icono fas fa-globe"></i></span>en</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="color-lines">
+		<div class="line lightred"></div>
+		<div class="line red"></div>
+		<div class="line pink"></div>
+		<div class="line yellow"></div>
+		<div class="line skyblue"></div>
+		<div class="line darkblue"></div>
+		<div class="line green"></div>
+		<div class="line lightgreen"></div>
+	</div>
+
+	{% block inicio %}
+
+	{% endblock %}
+
+	{% block nosotros %}
+
+	{% endblock %}
+
+	{% block eventos %}
+
+	{% endblock %}
+
+	{% block buscareventp %}
+
+	{% endblock %}
+
+	{% block noticias %}
+
+	{% endblock %}
+
+	{% block faq %}
+
+	{% endblock %}
+	
+	{% block aviso %}
+
+	{% endblock %}
+
+	{% block terminos %}
+
+	{% endblock %}
+
+	{% block vernoticia %}
+
+	{% endblock %}
+
+	{% block verevento %}
+
+	{% endblock %}
+	  
+	<button onclick="topFunction()" id="btnScroll" title="Ir arriba"><i class="fas fa-chevron-circle-up text-white"></i></button> 
+		
+	<footer class="darkgray">
+	<div class="container py-3">
+		<div class="row">
+			<div class="col-lg-4 col-sm-12 py-2">
+				<div href="#" class="social-media d-flex justify-content-center align-items-center">
+					<div class="row">
+						<div class="col-lg-12 col-sm-12">
+						{% for pie in footer %}
+							<div class="social-media d-flex justify-content-center justify-md-content-start align-items-center">
+								<a href="{{ pie.facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+								<a href="{{ pie.twitter }}" target="_blank"><i class="fab fa-twitter"></i></a>
+								<a href="{{ pie.youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>
+							</div>
+						{% endfor %}
+						</div>
+						<div class="col-lg-12 col-sm-12 d-flex justify-content-center justify-md-content-start">
+							<img src="{{ 'images/logo_blanco.png' | url }}" class="soluticket-blanco pt-3">
+						</div>
+					</div>						
+				</div>	  
+			</div>
+
+			<div class="col-lg-8 col-sm-12 py-2 ">			
+				<div class="row">	
+					<div class="col-lg-6 col-sm-6 text-center text-lg-right">
+						<a class="footer-titulo mt-2">Menú</a>
+						<div class="footer-links d-flex flex-column justify-content-center justify-content-md-end">
+						<a class="py-1" href="{{ '' | url }}">Inicio</a>
+						<a class=" py-1" href="{{ 'eventos' | url }}">Eventos</a>
+						<a class="py-1" href="{{ 'faq' | url }}">Faq</a>
+						<a class="py-1" href="{{ 'noticias' | url }}">Noticias</a>
+
+						<a class="py-1" data-toggle="modal" data-target="#contacto">Contacto</a>							
+							<div class="modal fade" id="contacto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+								<div class="modal-dialog modal-lg" role="document">
+									<div class="modal-content px-5">
+										<div class="modal-header">
+											<h3 class="modal-title" id="exampleModalLongTitle">¿Tienes alguna duda?</h3>
+											<a class="close text-dark" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+										</div>
+										<h3 class="text-left text-uppercase py-3">Envíanos un correo</h3>
+										<form method="post" class="d-flex flex-column" action="enviarcorreo/">
+											<div class="form-group d-flex justify-content-center justify-content-lg-end">
+												<input type="email" class="contact-form" name="correo" id="correo" aria-describedby="emailHelp" placeholder="Correo electrónico" required>
+											</div>
+											<div class="form-group d-flex justify-content-center justify-content-lg-end">
+												<input type="text" class="contact-form" name="nombre" id="nombre" placeholder="Nombre" required>
+											</div>
+											<div class="form-group d-flex justify-content-center justify-content-lg-end">
+												<input type="text" class="contact-form" name="asunto" id="asunto" placeholder="Asunto" required>
+											</div>
+											<div class="form-group d-flex justify-content-center justify-content-lg-end">
+												<img class="d-none d-md-flex p-1" src="{{ 'images/character_ticketazo.png' | url }}" width="150" height="140">
+												<textarea class="contact-form" name="mensaje" id="mensaje" placeholder="Mensaje" rows="3" required></textarea>
+											</div>
+											<button type="submit" class="btn btn-success my-3">Enviar</button>
+										</form>
+										<div class="modal-footer">
+											<a class="btn btn-danger text-white" data-dismiss="modal">Cerrar</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-sm-6 text-center text-lg-right mt-4">
+							<a class="footer-titulo mt-3">Información</a>		
+							<div class="footer-links d-flex flex-column justify-content-center justify-content-md-end">
+								<a class="py-1" href="{{ 'aviso' | url }}">Aviso de privacidad</a>
+								<a class="py-1" href="{{ 'terminos' | url }}">Términos y condiciones</a>
+
+								<a class="py-1 " data-toggle="modal" data-target="#mexico">Contacto directo</a>
+								<div class="modal fade text-left" id="mexico" tabindex="-1" role="" aria-labelledby="" aria-hidden="true">
+									<div class="modal-dialog modal-lg class="text-left"" role="">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLongTitle">Contáctanos directamente</h5>
+												<a class="close text-dark" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</a>
+											</div>
+											<div class="modal-body">
+												<div class="col-lg-12 col-sm-12 d-flex flex-column flex-row justify-content-center py-2">
+													<div>
+														<div class="mb-3" id="whatsapp">
+															<div class="card card-body">
+																<div class="d-flex">
+																	<a class="pr-3" href="#whatsapp" role="button" aria-expanded="false" aria-controls="collapseExample">
+																		<i class="fab fa-whatsapp fa-2x text-danger"></i>
+																	</a>
+																	<div>
+																	3334671961 (Solo vía Whatsapp)
+																	<br>Horario de Atención de 10:00 am a 6:00 pm
+																	</div>	
+																</div>
+																
+															</div>														
+														</div>
+													</div>
+													<div>
+														<div class="mb-3" id="collapseExample">
+															<div class="card card-body">
+																<div class="d-flex">
+																	<a class="pr-3" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+																		<i class="fa fa-phone fa-2x p-2 text-danger" aria-hidden="true"></i>
+																	</a>
+																	<div>
+																		Telefono de Oficina:	
+																	<br> (33) 2267 8805
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<h5 class=" d-flex flex-column my-2">Contacto en USA Soluticket Inc.</h5>
+													<div>													
+														<div class="mb-3" id="adressUSA">
+															<div class="card card-body">
+																<div class="d-flex">
+																	<a class="pr-3" href="#adressUSA" role="button" aria-expanded="false" aria-controls="collapseExample">
+																		<i class="fa fa-map-marker fa-2x p-2 text-danger" aria-hidden="true"></i>
+																	</a>
+																	<div>
+																		105 N WOLF RD 2E
+																		<br> WHEELING, ILLINOIS
+																		<br> 60090
+																		<div class="mb-3" id="telUSA">
+																			Tel. (847) 766 8634
+																		</div>
+																	</div>
+																</div>		
+															</div>
+														</div>
+													</div>												
+												</div>
+											</div>
+											<div class="modal-footer">
+												<a class="btn btn-danger text-white" data-dismiss="modal">Cerrar</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="darkblue d-flex flex-column justify-content-center align-items-center py-2">
+		<div class="col-lg-12 col-sm-12 d-flex justify-content-center align-items-center">
+			<a href="" data-toggle="modal" data-target="#exampleModalCenter"><img src="{{ 'images/mastercardsecurecode.png' | url }}" class="mastercard"></a>
+			<a href="" data-toggle="modal" data-target="#exampleModalCenter"><img src="{{ 'images/3secure.png' | url }}" class="secure mx-2 py-4"></a>
+			<a href="" data-toggle="modal" data-target="#exampleModalCenter"><img src="{{ 'images/verifiedbyvisa.png' | url }}" class="visa"></a>
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3 class="modal-title text-center" id="exampleModalCenterTitle">¿Qué es 3D Secure?</h3>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>3D Secure es el sistema de autenticación en línea, que le permite realizar compras con la misma seguridad que existe en el mundo físico. Su código 3D secure se traduce en Verified by Visa o MasterCard SecureCode, según sea el caso de su tarjeta.<br>
+
+							Tenga la tranquilidad de que sus pagos en línea están protegidos.</p><br>
+
+							<h4>¿Cómo funciona?</h4>
+
+							<p>Luego de ingresar los datos de su tarjeta, aparecerá una nueva ventana que le solicitará su código previamente registrado. Su institución financiera autenticará los datos y confirmará que es usted el dueño legítimo de la tarjeta.</p><br>
+
+							<h4>¿Cómo activarlo?</h4>
+
+							<p>En caso de no contar con su código 3D Secure, será redirigido al portal de su banco para llevar a cabo el registro de su código.<br>
+
+							Le recomendamos tener a la mano su estado de cuenta bancario.
+							Se le realizarán 3 preguntas para verificar que usted es el propietario legítimo de la tarjeta.
+							Posteriormente podrá ingresar su nueva clave 3D Secure, la cual utilizará en adelante para realizar todos sus pagos en línea.</p><br>
+
+							<h4>Beneficios</h4>
+
+							<p> - Mayor seguridad del consumidor en sus compras por Internet.<br>
+							 - Sólo se necesita un password de compra y su tarjeta para efectuar la compra.<br>
+							 - El sistema es muy sencillo y fácil de usar.<br>
+							 - No se requiere ningún software especial de aplicaciones en el dispositivo de acceso del tarjetahabiente.<br>
+							 - Es un sistema de autenticación global.<br>
+							 - Utiliza la misma tarjeta con la que cuenta actualmente.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger">Cerrar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="info d-flex flex-column justify-content-center align-items-center py-2">
+		<a class="text-white text-center">© 2018 SoluTicket. Todos los derechos reservados.</a>
+	</div>
+</footer>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	{# <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> #}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="{{ 'js/bootstrap.js' | url }}"></script>
+	<script src="{{ 'js/kiwwwi-slider.min.js' | url }}"></script>
+	<script src="{{ 'js/owl.carousel.js' | url }}"></script>
+	<script src="{{ 'js/wow.js' | url }}"></script>
+	<script src="{{ 'js/scroll.js' | url }}"></script>
+	<script src="{{ 'js/main.js' | url }}"></script>
+</body>
+</html> 

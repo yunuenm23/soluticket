@@ -1,0 +1,64 @@
+{% extends 'layoutAdmin.twig' %}
+{% block ver %}
+<div class="col-sm-12 pt-5">
+    <h3 class="">Ver</h3>
+    <h3>
+        <a href="{{ 'admin/puntosdeventa'|url }}" class="btn btn-outline-danger">
+            <i style="font-size: 2em;" class="fas fa-chevron-left"></i>
+        </a>
+    </h3>
+</div>
+<div class="d-flex justify-content-center align-items-center flex-column">
+
+    <div class="col-sm-7">
+    {% for eventoid in evento %}
+        <div class="py-2">
+            <img class="card-img-top" src="../../{{ eventoid.slide }}" alt="Well, I didn&#39;t vote for you.">
+            <div class="card-body d-flex flex-column">
+                <h4> <a>{{ eventoid.lugar }}</a> </h4>
+                <h4>Evento para el <a>{{ eventoid.fecha }}</a> </h4>
+                <h4>A las <a>{{ eventoid.hora }}</a> hrs.</h4>
+                <div class="text-dark">{{ eventoid.articulo|raw }}</div>
+                <h4>Liga de compra: <a>{{ eventoid.link }}</a></h4>
+                <h4 class="text-blue">Script:</h4> <br> <a class"text-dark">{{ eventoid.facebook_pixel|raw }}</a>
+                <h4>Status del evento: 
+                    {% if evento.realizado == true %}
+                        <i class="text-success fe fe-target"></i>
+                    {% else %}
+                        <i class="text-danger fe fe-target"></i>
+                    {% endif %}                  
+                </h4>      
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <div class="col-sm-5 card">
+        <div class="py-2">
+            {% for venta in pventa %}
+            <img class="card-img-top" src="../../{{ venta.thumbnail }}" alt="Well, I didn&#39;t vote for you.">
+            <div class="card-body d-flex flex-column">
+                <h4> <a>{{ venta.establecimieto }}</a> </h4>
+                
+                <div class="text-dark">{{ venta.contenido|raw }}</div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+    {% for post in blog %}
+        <div class="py-5">
+            <img class="card-img-top" src="../../{{ post.img_blog }}" alt="Well, I didn&#39;t vote for you.">
+            <div class="card-body d-flex flex-column">
+                <h4> <a>{{ post.titulo }}</a> </h4>
+                <h4>Publicado el <a>{{ post.created_at }}</a> </h4>
+                <div class="text-dark">{{ post.articulo|raw }}</div>
+                <h4><a>{{ post.descripcion }}</a></h4>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

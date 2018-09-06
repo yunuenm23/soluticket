@@ -1,0 +1,103 @@
+{% extends 'layoutAdmin.twig' %}
+{% block datos %}
+<div class="container bg-white py-3">
+    <h3 class="">Datos generales</h3>
+  <div class="col-sm-12"><h3><a href="{{ 'admin/'|url }}" class="btn btn-outline-danger"><i style="font-size: 2em;" class="fas fa-chevron-left"></i></a></h3></div>
+
+  <div class="col-sm-12 ">
+
+          <div class="card-header bg-dark">
+              <h3 class="card-title text-white">Datos Generales</h3>
+          </div>
+          <form class="card" method="post" enctype="multipart/form-data">
+            {% if errors %}
+                <div class="alert alert-danger">No se pudo actualizar cambiar la imagen, revisa las restricciones de subida.</div>
+            {% endif %}
+            {% if resultado %}
+                <div class="alert alert-success">Banner actualizado</div>
+            {% endif %}
+            <div class="card-body bg-light">
+            {% for dato in datos %}
+            <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Sitio Web</label>
+                            <input type="text" name="sitio" value="{{ dato.sitio }}" class="form-control" placeholder="Titulo del sitio web">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                        <label>Palabras clave</label>
+                        <textarea style="width:100%;" name="pclave" rows="6" class="form-control p-4" placeholder="Inserte palabras clave en minúsculas y separadas por coma">{{ dato.pclave }}</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Descripción del sitio</label>
+                            <textarea style="width: 100%;" class="form-control" name="descripcion" rows="6" placeholder="Añada una descripción relacionada con su sitio web">{{ dato.descripcion }}</textarea>
+                        </div>
+                    </div>
+                     <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Autor del sitio</label>
+                            <input type="text" name="autor" class="form-control" value="{{ dato.autor }}" placeholder="Desarrollador del sitio"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-6 form-group">
+                        <div class="card-footer text-right">
+                            <button type="submit" class="btn btn-pinterest">Guardar</button>
+                        </div>
+                    </div>
+                 </div>
+            {% endfor %}
+            </div>
+            </form>
+
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="card-header bg-dark"><h3 class="card-title text-white">Pie de página</h3></div>
+        <form class="card" method="post" enctype="multipart/form-data" action="{{ 'admin/datospie/1' | url }}">
+            {% if errors %}
+                <div class="alert alert-danger">No se pudo actualizar cambiar la imagen, revisa las restricciones de subida.</div>
+            {% endif %}
+            {% if resultado %}
+                <div class="alert alert-success">Banner actualizado</div>
+            {% endif %}
+            <div class="card-body bg-light">
+            {% for pie in footer %}
+            <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Link de facebook</label>
+                            <input type="text" name="facebook" value="{{ pie.facebook }}" class="form-control" placeholder="Url de facebook">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Link de twitter</label>
+                            <input type="text" class="form-control" name="twitter" value="{{ pie.twitter }}" placeholder="Url de twitter">
+                        </div>
+                    </div>
+                     <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Link de youtube</label>
+                            <input type="text" name="youtube" class="form-control" value="{{ pie.youtube }}" placeholder="Url de youtube"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-6 form-group">
+                        <div class="card-footer text-right">
+                            <button type="submit" class="btn btn-pinterest">Guardar</button>
+                        </div>
+                    </div>
+                 </div>
+            {% endfor %}
+            </div>
+        </form>
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}

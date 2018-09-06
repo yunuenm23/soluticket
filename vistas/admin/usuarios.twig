@@ -1,0 +1,127 @@
+{% extends 'layoutAdmin.twig' %}
+{% block usuarios %}
+<div class="container bg-white py-3">
+    <h3 class="">Usuarios</h3>
+  <div class="col-sm-12"><h3><a href="{{ 'admin/'|url }}" class="btn btn-outline-danger"><i style="font-size: 2em;" class="fas fa-chevron-left"></i></a></h3></div>
+
+  <div class="col-sm-12 ">
+    <div class="card">
+          <div class="card-header bg-dark">
+              <h3 class="card-title text-white">Nuevo usuario</h3>
+          </div>
+          <form class="card" method="post" enctype="multipart/form-data">
+            {% if errors %}
+                <div class="alert alert-danger">El usuario no ha sido dado de alta.</div>
+            {% endif %}
+            {% if resultado %}
+                <div class="alert alert-success">Usuario dado de alta</div>
+            {% endif %}
+            <div class="card-body bg-light">
+            <div class="row">
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" name="nombre" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Apellido</label>
+                            <input type="text" name="apellido" class="form-control"/>
+                        </div>
+                    </div>
+                    
+                     <div class="col-lg-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Nombre de usuario</label>
+                            <input type="text" name="usuario" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Correo</label>
+                            <input type="email" name="correo" class="form-control" required>
+                        </div>
+                    </div>             
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Contraseña</label>
+                            <input type="password" name="clave" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                        <label class="form-label">Tipo de usuario</label>
+                            <select class="custom-select" name="tipousuario" required>
+                            <option disabled>Selecciona un tipo de usuario</option>
+                                <option value="1">Administrador</option>
+                                <option value="2">Diseñador</option>
+                                <option value="3">Community Manager</option>
+                                <option value="4">Soporte Técnico</option>
+                            </select>
+                        </div>
+                    </div>
+                     <div class="col-sm-12 alert alert-warning d-flex justify-content-between">
+                        <div class="">
+                            <label for="slide">Subir imagen:
+                                <a><br>Dimensiones: 150x150<br>Tamaño máximo: 1M<br>Formatos permitidos: JPEG, JPG, PNG</a>
+                            </label> 
+                            <input type="file" class="form-control-file" name="imgProfile" id="imgProfile">
+                        </div>                  
+                    </div>       
+                    <div class="col-sm-12">
+                         <div class="card-footer text-right">
+                            <button type="submit" class="btn btn-pinterest">Agregar usuario</button>
+                        </div>                       
+                    </div>          
+                 </div>
+                </div>
+            </form>
+      </div>
+    </div>
+
+    <div class="col-12">
+    <div class="card">
+        <div class="card-header bg-dark">
+            <h3 class="card-title text-white">Usuarios registrados</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table card-table table-center text-nowrap table-hover">
+            <thead class="text-center bg-light">
+            <tr>
+                <th  class="text-dark">No.</th>
+                <th class="text-dark">Thumbnail</th>
+                <th  class="text-dark">Evento</th>
+                <th  class="text-dark">Alta</th>
+                <th  class="text-dark">Correo</th>
+                <th  class="text-dark">Opciones</th>
+            </tr>
+            </thead>
+            <tbody class="text-center"
+            {% for usuario in usuarios %}
+            <tr>
+                <td><span>{{ usuario.id }}</span></td>
+                <td>
+                    <span class="avatar mr-3 align-self-center" style="background-image: url(../{{ usuario.foto }})"></span>
+                </td>
+                <td >{{ usuario.nombre }} {{ usuario.apellido }}</td>
+                <td>{{ usuario.created_at }}</td>
+                <td>{{ usuario.correo }}</td>                
+                <td class="text-center">
+                    <a href="javascript:void(0)" class="btn btn-danger btn-sm" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fe fe-align-center"></i></a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ 'admin/usuarios/editarusuario/' | url }}{{ usuario.id }}">Editar</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item d-flex align-items-center" href="{{ 'admin/usuarios/eliminar/' | url }}{{ usuario.id }}"><i class="text-danger fe fe-trash mr-1"></i> Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}          
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
